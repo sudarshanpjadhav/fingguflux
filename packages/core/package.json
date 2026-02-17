@@ -1,0 +1,28 @@
+{
+    "name": "@finggu/core",
+    "version": "0.9.0",
+    "description": "FingguFlux core design tokens and fundamental CSS architecture.",
+    "main": "index.css",
+    "files": [
+        "*.css",
+        "components/*.css",
+        "src/tokens.ts",
+        "dist"
+    ],
+    "exports": {
+        ".": "./index.css",
+        "./tokens": "./src/tokens.ts",
+        "./tokens.css": "./tokens.css",
+        "./reset.css": "./reset.css",
+        "./layout.css": "./layout.css",
+        "./motion": "./index.css"
+    },
+    "keywords": [
+        "css",
+        "design-tokens",
+        "hardening",
+        "architecture-first"
+    ],
+    "author": "Finggu Architecture Team",
+    "license": "MIT"
+}

@@ -1,0 +1,32 @@
+{
+    "name": "@finggu/js-helper",
+    "version": "0.9.0",
+    "description": "Shared runtime logic for FingguFlux themes and motion state management.",
+    "main": "src/index.ts",
+    "module": "src/index.ts",
+    "types": "src/index.ts",
+    "files": [
+        "dist",
+        "src"
+    ],
+    "exports": {
+        ".": {
+            "types": "./src/index.ts",
+            "import": "./src/index.ts"
+        }
+    },
+    "scripts": {
+        "build": "tsup src/index.ts --format cjs,esm --dts"
+    },
+    "devDependencies": {
+        "tsup": "^8.0.0",
+        "typescript": "^5.0.0"
+    },
+    "keywords": [
+        "runtime",
+        "theme-switching",
+        "motion-logic"
+    ],
+    "author": "Finggu Architecture Team",
+    "license": "MIT"
+}

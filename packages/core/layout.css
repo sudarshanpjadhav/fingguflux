@@ -1,0 +1,100 @@
+/* Layout Engine - Grid, Flex, Container Queries */
+
+:root {
+    --ff-container-sm: 640px;
+    --ff-container-md: 768px;
+    --ff-container-lg: 1024px;
+    --ff-container-xl: 1280px;
+    --ff-container-2xl: 1440px;
+}
+
+/* Container Queries Registration */
+.ff-container-inline {
+    container-type: inline-size;
+    width: 100%;
+}
+
+/* Flexbox utilities */
+.ff-flex {
+    display: flex;
+}
+
+.ff-flex-col {
+    flex-direction: column;
+}
+
+.ff-flex-wrap {
+    flex-wrap: wrap;
+}
+
+.ff-items-center {
+    align-items: center;
+}
+
+.ff-justify-center {
+    justify-content: center;
+}
+
+.ff-justify-between {
+    justify-content: space-between;
+}
+
+.ff-gap-1 {
+    gap: var(--ff-space-1);
+}
+
+.ff-gap-2 {
+    gap: var(--ff-space-2);
+}
+
+.ff-gap-4 {
+    gap: var(--ff-space-4);
+}
+
+/* Grid utilities */
+.ff-grid {
+    display: grid;
+}
+
+.ff-grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.ff-grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.ff-grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ff-grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* Container based adjustments (Modern approach) */
+@container (min-width: 640px) {
+    .ff-c-grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@container (min-width: 1024px) {
+    .ff-c-grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* Utility Containers */
+.ff-mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ff-w-full {
+    width: 100%;
+}
+
+.ff-max-w-screen-xl {
+    max-width: var(--ff-container-xl);
+}

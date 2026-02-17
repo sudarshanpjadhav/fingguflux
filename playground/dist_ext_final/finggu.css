@@ -1,0 +1,1034 @@
+/* Button Component */
+
+.ff-a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--ff-font-medium);
+    border-radius: var(--ff-radius-md);
+    cursor: pointer;
+    border: var(--ff-border-width-1) solid transparent;
+    user-select: none;
+    white-space: nowrap;
+    /* Motion isolated - no transition by default */
+}
+
+/* Variants */
+.ff-b {
+    background-color: var(--ff-primary);
+    color: var(--ff-neutral-0);
+}
+
+.ff-b:hover,
+.ff-btn-primary-hover {
+    background-color: var(--ff-primary-700);
+}
+
+.ff-btn-secondary {
+    background-color: var(--ff-neutral-100);
+    color: var(--ff-neutral-900);
+    border-color: var(--ff-neutral-200);
+}
+
+.ff-btn-secondary:hover,
+.ff-btn-secondary-hover {
+    background-color: var(--ff-neutral-200);
+}
+
+.ff-btn-ghost {
+    background-color: transparent;
+    color: var(--ff-text);
+}
+
+.ff-btn-ghost:hover,
+.ff-btn-ghost-hover {
+    background-color: var(--ff-neutral-100);
+}
+
+.ff-c {
+    background-color: transparent;
+    color: var(--ff-primary);
+    border-color: var(--ff-primary);
+}
+
+.ff-c:hover,
+.ff-btn-outline-hover {
+    background-color: var(--ff-primary-50);
+}
+
+/* Sizes */
+.ff-btn-sm {
+    padding: var(--ff-space-1) var(--ff-space-3);
+    font-size: var(--ff-text-xs);
+}
+
+.ff-d {
+    padding: var(--ff-space-2) var(--ff-space-4);
+    font-size: var(--ff-text-sm);
+}
+
+.ff-btn-lg {
+    padding: var(--ff-space-3) var(--ff-space-6);
+    font-size: var(--ff-text-base);
+}
+
+/* States - Flat Classes + Pseudo */
+.ff-a:active,
+.ff-btn-active {
+    transform: scale(0.98);
+    /* Subtle internal state, doesn't require separate motion class but is isolated to active state */
+}
+
+.ff-a:disabled,
+.ff-btn-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.ff-a:focus-visible,
+.ff-btn-focus {
+    outline: var(--ff-border-width-2) solid var(--ff-primary);
+    outline-offset: var(--ff-ring-offset);
+}
+/* Card Component */
+
+.ff-e {
+    background-color: var(--ff-surface);
+    border-radius: var(--ff-radius-xl);
+    border: var(--ff-border-width-1) solid var(--ff-neutral-200);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Variants */
+.ff-card-outline {
+    border: var(--ff-border-width-2) solid var(--ff-neutral-200);
+    box-shadow: none;
+}
+
+.ff-f {
+    background: var(--ff-glass-highlight);
+    backdrop-filter: blur(var(--ff-blur-md));
+    -webkit-backdrop-filter: blur(var(--ff-blur-md));
+    border: var(--ff-border-width-1) solid var(--ff-glass-border);
+}
+
+/* Sub-components (composed via classes) */
+.ff-g {
+    padding: var(--ff-space-5);
+    flex: 1 1 auto;
+}
+
+.ff-h {
+    padding: var(--ff-space-4) var(--ff-space-5);
+    border-bottom: var(--ff-border-width-1) solid var(--ff-neutral-200);
+}
+
+.ff-card-footer {
+    padding: var(--ff-space-4) var(--ff-space-5);
+    border-top: var(--ff-border-width-1) solid var(--ff-neutral-200);
+    background-color: var(--ff-neutral-50);
+}
+
+/* Shadows are composed via ff-shadow-* classes */
+/* Dropdown Component */
+
+.ff-i {
+    position: relative;
+    display: inline-block;
+}
+
+.ff-j {
+    /* Composable: User should add .ff-a or other styling classes */
+    cursor: pointer;
+}
+
+.ff-k {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    z-index: var(--ff-layer-popover);
+    margin-top: var(--ff-space-2);
+    transform-origin: top;
+    /* Motion and visibility driven by state */
+}
+
+/* Dropdown States - Attribute driven */
+.ff-i[data-ff-state="closed"] .ff-k {
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-4px) scale(0.95);
+}
+
+.ff-i[data-ff-state="open"] .ff-k {
+    pointer-events: auto;
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Optional: Right-aligned Menu */
+.ff-l {
+    left: auto;
+    right: 0;
+}
+
+/* Dropdown Items */
+.ff-m {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: var(--ff-space-2) var(--ff-space-4);
+    background: transparent;
+    border: none;
+    color: var(--ff-neutral-700);
+    font-size: var(--ff-font-sm);
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+}
+
+.ff-m:hover,
+.ff-m:focus {
+    background-color: var(--ff-neutral-100);
+    color: var(--ff-neutral-900);
+}
+
+.ff-m:active {
+    background-color: var(--ff-neutral-200);
+}
+
+/* Compression safe: selectors are not deeply nested beyond the state requirement */
+/* Note: Using .ff-i[data-ff-state="open"] .ff-k is acceptable 
+   as a state-dependent visibility toggle, but we will aim for flat where possible. */
+/* Input Component */
+
+.ff-input {
+    width: 100%;
+    padding: var(--ff-space-2) var(--ff-space-4);
+    background-color: var(--ff-surface);
+    border: var(--ff-border-width-1) solid var(--ff-neutral-300);
+    border-radius: var(--ff-radius-md);
+    color: var(--ff-text);
+    font-size: var(--ff-text-sm);
+    /* Motion isolated */
+}
+
+.ff-input::placeholder {
+    color: var(--ff-neutral-400);
+}
+
+.ff-input:focus,
+.ff-input-focused {
+    outline: none;
+    border-color: var(--ff-primary);
+    box-shadow: 0 0 0 var(--ff-ring-width) rgba(var(--ff-primary-rgb), 0.15);
+}
+
+.ff-input-error {
+    border-color: var(--ff-danger);
+}
+
+.ff-input-error:focus {
+    border-color: var(--ff-danger);
+    box-shadow: 0 0 0 var(--ff-ring-width) rgba(239, 68, 68, 0.15);
+}
+
+.ff-input:disabled,
+.ff-input-disabled {
+    background-color: var(--ff-neutral-50);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Label Helper (Utility-based) */
+.ff-label {
+    display: block;
+    font-size: var(--ff-text-xs);
+    font-weight: var(--ff-font-semibold);
+    color: var(--ff-neutral-600);
+    margin-bottom: var(--ff-space-1);
+}
+/* Accessible Modal Component */
+
+.ff-n {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: var(--ff-layer-popover);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--ff-space-4);
+    pointer-events: none;
+    visibility: hidden;
+}
+
+/* Modal States - Attribute driven only */
+[data-ff-state="open"].ff-n {
+    pointer-events: auto;
+    visibility: visible;
+}
+
+[data-ff-state="closed"].ff-n {
+    pointer-events: none;
+    visibility: hidden;
+}
+
+/* Modal Overlay */
+.ff-o {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--ff-neutral-900);
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+/* Modal Content Container */
+.ff-p {
+    position: relative;
+    width: 100%;
+    max-width: var(--ff-container-md);
+    z-index: 1;
+    /* Above overlay */
+    /* Composable: User should add .ff-e and motion classes here */
+}
+
+/* Reduction motion support */
+@media (prefers-reduced-motion: reduce) {
+
+    .ff-o,
+    .ff-p {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+/* Tabs Component - Strictly Flat Selectors */
+
+.ff-q {
+    display: flex;
+    border-bottom: var(--ff-border-width-1) solid var(--ff-neutral-200);
+    gap: var(--ff-space-4);
+}
+
+.ff-r {
+    padding: var(--ff-space-2) var(--ff-space-4);
+    background: transparent;
+    border: none;
+    border-bottom: var(--ff-border-width-2) solid transparent;
+    color: var(--ff-neutral-500);
+    font-weight: var(--ff-font-medium);
+    cursor: pointer;
+    outline: none;
+    /* Motion isolated */
+}
+
+.ff-r:hover {
+    color: var(--ff-neutral-700);
+}
+
+.ff-r[data-ff-state="active"] {
+    color: var(--ff-primary);
+    border-bottom-color: var(--ff-primary);
+}
+
+.ff-r:focus-visible {
+    outline: var(--ff-border-width-2) solid var(--ff-primary);
+    outline-offset: -2px;
+    border-radius: var(--ff-radius-sm);
+}
+
+/* Tab Panel */
+.ff-tab-panel {
+    padding: var(--ff-space-6) 0;
+}
+
+.ff-tab-panel[data-ff-state="active"] {
+    display: block !important;
+}
+
+.ff-tab-panel[data-ff-state="inactive"] {
+    display: none !important;
+}
+
+/* Vertical Variant - Additive */
+.ff-tabs-vertical {
+    flex-direction: column;
+    border-bottom: none;
+    border-right: var(--ff-border-width-1) solid var(--ff-neutral-200);
+}
+
+/* Vertical Tab Indicator Adjustment */
+.ff-tab-vertical {
+    border-bottom: none;
+    border-right: var(--ff-border-width-2) solid transparent;
+    text-align: left;
+}
+
+.ff-tab-vertical[data-ff-state="active"] {
+    border-right-color: var(--ff-primary);
+}
+/* UI Helpers - Glass, Shadows, Modern Effects */
+
+/* Glassmorphism */
+.ff-glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+    .ff-glass {
+        background: rgba(15, 23, 42, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+}
+
+/* Shadows */
+.ff-shadow-sm {
+    box-shadow: var(--ff-shadow-sm);
+}
+
+.ff-shadow-md {
+    box-shadow: var(--ff-shadow-md);
+}
+
+.ff-s {
+    box-shadow: var(--ff-shadow-lg);
+}
+
+.ff-t {
+    box-shadow: var(--ff-shadow-xl);
+}
+
+/* Transitions */
+.ff-transition {
+    transition: all var(--ff-motion-fast);
+}
+
+.ff-transition-slow {
+    transition: all var(--ff-motion-slow);
+}
+
+/* Visibility & Accessibility Defaults */
+.ff-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.ff-focus-ring:focus-visible {
+    outline: 2px solid var(--ff-primary);
+    outline-offset: 2px;
+}
+
+/* Interaction Helpers */
+.ff-u {
+    cursor: pointer;
+}
+
+.ff-user-select-none {
+    user-select: none;
+}
+
+/* JS Helper State Hooks */
+[data-ff-scroll-lock="true"] {
+    overflow: hidden;
+    padding-right: var(--ff-scrollbar-width, 0px);
+}
+
+[data-ff-state="closed"] {
+    display: none !important;
+}
+
+[data-ff-state="open"] {
+    display: flex !important;
+}
+/* Layout Engine - Grid, Flex, Container Queries */
+
+:root {
+    --ff-container-sm: 640px;
+    --ff-container-md: 768px;
+    --ff-container-lg: 1024px;
+    --ff-container-xl: 1280px;
+    --ff-container-2xl: 1440px;
+}
+
+/* Container Queries Registration */
+.ff-container-inline {
+    container-type: inline-size;
+    width: 100%;
+}
+
+/* Flexbox utilities */
+.ff-v {
+    display: flex;
+}
+
+.ff-flex-col {
+    flex-direction: column;
+}
+
+.ff-flex-wrap {
+    flex-wrap: wrap;
+}
+
+.ff-w {
+    align-items: center;
+}
+
+.ff-justify-center {
+    justify-content: center;
+}
+
+.ff-x {
+    justify-content: space-between;
+}
+
+.ff-gap-1 {
+    gap: var(--ff-space-1);
+}
+
+.ff-gap-2 {
+    gap: var(--ff-space-2);
+}
+
+.ff-y {
+    gap: var(--ff-space-4);
+}
+
+/* Grid utilities */
+.ff-grid {
+    display: grid;
+}
+
+.ff-grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.ff-grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.ff-grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ff-grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* Container based adjustments (Modern approach) */
+@container (min-width: 640px) {
+    .ff-c-grid-cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@container (min-width: 1024px) {
+    .ff-c-grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+/* Utility Containers */
+.ff-z {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ff-w-full {
+    width: 100%;
+}
+
+.ff-max-w-screen-xl {
+    max-width: var(--ff-container-xl);
+}
+/* Modern CSS Reset */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+html {
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  scroll-behavior: smooth;
+  color-scheme: dark light;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--ff-surface);
+  color: var(--ff-text);
+  font-family: var(--ff-font-sans);
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul[role='list'], ol[role='list'] {
+  list-style: none;
+}
+
+a {
+  text-underline-offset: 0.2ex;
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, select, textarea {
+  background: transparent;
+  border: none;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root {
+  /* --- Colors --- */
+  --ff-primary-50: #eff6ff;
+  --ff-primary-100: #dbeafe;
+  --ff-primary-200: #bfdbfe;
+  --ff-primary-300: #93c5fd;
+  --ff-primary-400: #60a5fa;
+  --ff-primary-500: #3b82f6;
+  --ff-primary-600: #2563eb;
+  --ff-primary-700: #1d4ed8;
+  --ff-primary-800: #1e40af;
+  --ff-primary-900: #1e3a8a;
+
+  --ff-primary: var(--ff-primary-600);
+  --ff-secondary: #64748b;
+  --ff-danger: #ef4444;
+  --ff-success: #22c55e;
+  --ff-warning: #f59e0b;
+  --ff-info: #06b6d4;
+
+  /* --- Neutral --- */
+  --ff-neutral-0: #ffffff;
+  --ff-neutral-50: #f8fafc;
+  --ff-neutral-100: #f1f5f9;
+  --ff-neutral-200: #e2e8f0;
+  --ff-neutral-300: #cbd5e1;
+  --ff-neutral-400: #94a3b8;
+  --ff-neutral-500: #64748b;
+  --ff-neutral-600: #475569;
+  --ff-neutral-700: #334155;
+  --ff-neutral-800: #1e293b;
+  --ff-neutral-900: #0f172a;
+  --ff-neutral-1000: #000000;
+
+  /* --- Spacing --- */
+  --ff-space-0: 0px;
+  --ff-space-1: 0.25rem;
+  --ff-space-2: 0.5rem;
+  --ff-space-3: 0.75rem;
+  --ff-space-4: 1rem;
+  --ff-space-5: 1.25rem;
+  --ff-space-6: 1.5rem;
+  --ff-space-8: 2rem;
+  --ff-space-10: 2.5rem;
+  --ff-space-12: 3rem;
+  --ff-space-16: 4rem;
+  --ff-space-20: 5rem;
+
+  /* --- Radius --- */
+  --ff-radius-none: 0px;
+  --ff-radius-sm: 0.125rem;
+  --ff-radius-md: 0.375rem;
+  --ff-radius-lg: 0.5rem;
+  --ff-radius-xl: 0.75rem;
+  --ff-radius-2xl: 1rem;
+  --ff-radius-full: 9999px;
+
+  /* --- Shadows --- */
+  --ff-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --ff-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --ff-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --ff-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* --- Motion --- */
+  --ff-motion-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --ff-motion-medium: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --ff-motion-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* --- Typography Defaults --- */
+  --ff-font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ff-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* --- Borders & Effects --- */
+  --ff-border-width-1: 1px;
+  --ff-border-width-2: 2px;
+  --ff-ring-width: 3px;
+  --ff-ring-offset: 2px;
+  --ff-blur-md: 12px;
+  --ff-glass-highlight: rgba(255, 255, 255, 0.1);
+  --ff-glass-border: rgba(255, 255, 255, 0.1);
+
+  /* Semantic Themes */
+  --ff-surface: var(--ff-neutral-0);
+  --ff-text: var(--ff-neutral-900);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ff-surface: var(--ff-neutral-900);
+    --ff-text: var(--ff-neutral-50);
+    --ff-primary: var(--ff-primary-400);
+
+    --ff-neutral-0: #0f172a;
+    --ff-neutral-50: #1e293b;
+    --ff-neutral-900: #f8fafc;
+  }
+}
+/* Fluid Typography System */
+
+:root {
+    /* Font Sizes - Clamp based scaling (Min: 320px, Max: 1280px) */
+    --ff-text-xs: clamp(0.75rem, 0.7304rem + 0.0978vw, 0.8125rem);
+    --ff-text-sm: clamp(0.875rem, 0.8554rem + 0.0978vw, 0.9375rem);
+    --ff-text-base: clamp(1rem, 0.9609rem + 0.1957vw, 1.125rem);
+    --ff-text-lg: clamp(1.125rem, 1.0663rem + 0.2935vw, 1.3125rem);
+    --ff-text-xl: clamp(1.25rem, 1.1522rem + 0.4891vw, 1.5625rem);
+    --ff-text-2xl: clamp(1.5rem, 1.3435rem + 0.7826vw, 2rem);
+    --ff-text-3xl: clamp(1.875rem, 1.6207rem + 1.2717vw, 2.6875rem);
+    --ff-text-4xl: clamp(2.25rem, 1.8587rem + 1.9565vw, 3.5rem);
+    --ff-text-5xl: clamp(3rem, 2.3739rem + 3.1304vw, 5rem);
+
+    /* Font Weights */
+    --ff-font-thin: 100;
+    --ff-font-extralight: 200;
+    --ff-font-light: 300;
+    --ff-font-normal: 400;
+    --ff-font-medium: 500;
+    --ff-font-semibold: 600;
+    --ff-font-bold: 700;
+    --ff-font-extrabold: 800;
+    --ff-font-black: 900;
+
+    /* Line Heights */
+    --ff-leading-tight: 1.25;
+    --ff-leading-normal: 1.5;
+    --ff-leading-loose: 1.75;
+}
+
+/* Base Typography Classes */
+.ff-text-xs {
+    font-size: var(--ff-text-xs);
+}
+
+.ff-0 {
+    font-size: var(--ff-text-sm);
+}
+
+.ff-1 {
+    font-size: var(--ff-text-base);
+}
+
+.ff-text-lg {
+    font-size: var(--ff-text-lg);
+}
+
+.ff-2 {
+    font-size: var(--ff-text-xl);
+}
+
+.ff-3 {
+    font-size: var(--ff-text-2xl);
+}
+
+.ff-text-3xl {
+    font-size: var(--ff-text-3xl);
+}
+
+.ff-text-4xl {
+    font-size: var(--ff-text-4xl);
+}
+
+.ff-4 {
+    font-size: var(--ff-text-5xl);
+}
+
+.ff-5 {
+    font-family: var(--ff-font-sans);
+}
+
+.ff-font-mono {
+    font-family: var(--ff-font-mono);
+}
+
+.ff-6 {
+    font-weight: var(--ff-font-bold);
+}
+
+.ff-font-medium {
+    font-weight: var(--ff-font-medium);
+}
+
+.ff-leading-tight {
+    line-height: var(--ff-leading-tight);
+}
+
+.ff-leading-normal {
+    line-height: var(--ff-leading-normal);
+}
+/* Utility Classes - Margin, Padding, Colors */
+
+/* Padding utilities */
+.ff-p-0 {
+    padding: var(--ff-space-0);
+}
+
+.ff-7 {
+    padding: var(--ff-space-1);
+}
+
+.ff-8 {
+    padding: var(--ff-space-2);
+}
+
+.ff-p-3 {
+    padding: var(--ff-space-3);
+}
+
+.ff-p-4 {
+    padding: var(--ff-space-4);
+}
+
+.ff-p-6 {
+    padding: var(--ff-space-6);
+}
+
+.ff-9 {
+    padding: var(--ff-space-8);
+}
+
+/* Margin utilities */
+.ff-m-0 {
+    margin: var(--ff-space-0);
+}
+
+.ff-m-1 {
+    margin: var(--ff-space-1);
+}
+
+.ff-m-2 {
+    margin: var(--ff-space-2);
+}
+
+.ff-m-4 {
+    margin: var(--ff-space-4);
+}
+
+.ff-ba {
+    margin-top: var(--ff-space-1);
+}
+
+.ff-mt-2 {
+    margin-top: var(--ff-space-2);
+}
+
+.ff-mt-4 {
+    margin-top: var(--ff-space-4);
+}
+
+.ff-bb {
+    margin-bottom: var(--ff-space-1);
+}
+
+.ff-bc {
+    margin-bottom: var(--ff-space-2);
+}
+
+.ff-bd {
+    margin-bottom: var(--ff-space-4);
+}
+
+/* Colors */
+.ff-bg-primary {
+    background-color: var(--ff-primary);
+    color: white;
+}
+
+.ff-be {
+    background-color: var(--ff-surface);
+}
+
+.ff-bf {
+    color: var(--ff-primary);
+}
+
+.ff-bg {
+    color: var(--ff-neutral-500);
+}
+
+/* Borders & Radius */
+.ff-border {
+    border: 1px solid var(--ff-neutral-200);
+}
+
+.ff-rounded-md {
+    border-radius: var(--ff-radius-md);
+}
+
+.ff-rounded-lg {
+    border-radius: var(--ff-radius-lg);
+}
+
+.ff-rounded-full {
+    border-radius: var(--ff-radius-full);
+}
+/* Entry and Exit Animations */
+
+.ff-bh {
+    animation: ff-fade-in var(--ff-motion-medium) forwards;
+}
+
+.ff-bi {
+    animation: ff-slide-up var(--ff-motion-medium) var(--ff-motion-medium) backwards;
+    /* delayed to show staggered effect if used together */
+}
+
+.ff-scale-in {
+    animation: ff-scale-in var(--ff-motion-medium) forwards;
+}
+
+/* Utility to disable animations for prefers-reduced-motion is handled in reset.css */
+/* But we can provide explicit 'no-motion' overrides if needed */
+.ff-no-motion {
+    animation: none !important;
+    transition: none !important;
+}
+/* Global Motion Keyframes */
+
+@keyframes ff-fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes ff-slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(var(--ff-space-4));
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ff-scale-in {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes ff-glow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(var(--ff-primary-rgb), 0);
+    }
+
+    50% {
+        box-shadow: 0 0 20px 5px rgba(var(--ff-primary-rgb), 0.3);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(var(--ff-primary-rgb), 0);
+    }
+}
+/* Hover and State Transitions */
+
+.ff-bj {
+    transition: transform var(--ff-motion-medium), box-shadow var(--ff-motion-medium);
+}
+
+.ff-bj:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--ff-shadow-lg);
+}
+
+.ff-hover-glow {
+    transition: box-shadow var(--ff-motion-medium), border-color var(--ff-motion-medium);
+}
+
+.ff-hover-glow:hover {
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+    /* Using primary color hex for now as fallback */
+    border-color: var(--ff-primary);
+}
+
+/* Specific button-like active state */
+.ff-active-shrink {
+    transition: transform var(--ff-motion-fast);
+}
+
+.ff-active-shrink:active {
+    transform: scale(0.95);
+}
+
+/* Motion Mixins (Classes used for composition) */
+.ff-bk {
+    transition: all var(--ff-motion-fast);
+}
+
+.ff-bl {
+    transition: background-color var(--ff-motion-fast), border-color var(--ff-motion-fast), color var(--ff-motion-fast), box-shadow var(--ff-motion-fast);
+}

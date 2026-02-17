@@ -1,0 +1,27 @@
+{
+    "name": "@finggu/compiler",
+    "version": "0.9.0",
+    "description": "The FingguFlux static analysis and selector hardening engine.",
+    "main": "engine.js",
+    "bin": {
+        "finggu": "cli.js"
+    },
+    "files": [
+        "engine.js",
+        "scanner.js",
+        "cli.js",
+        "docs/policy.md"
+    ],
+    "type": "module",
+    "engines": {
+        "node": ">=16.0.0"
+    },
+    "keywords": [
+        "compiler",
+        "css-minification",
+        "hardening",
+        "obfuscation"
+    ],
+    "author": "Finggu Architecture Team",
+    "license": "MIT"
+}

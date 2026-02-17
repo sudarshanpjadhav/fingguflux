@@ -1,0 +1,13 @@
+/* FingguFlux Motion Engine - Main Entry Point */
+
+@import './keyframes.css';
+@import './transitions.css';
+@import './animations.css';
+
+:root {
+    --finggu-flux-motion-version: "1.0.0-phase2";
+
+    /* Helper for RGB colors to use with alpha in glows/shadows */
+    --ff-primary-rgb: 59, 130, 246;
+    /* Matches #3b82f6 */
+}

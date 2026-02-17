@@ -1,0 +1,38 @@
+/* Hover and State Transitions */
+
+.ff-hover-lift {
+    transition: transform var(--ff-motion-medium), box-shadow var(--ff-motion-medium);
+}
+
+.ff-hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--ff-shadow-lg);
+}
+
+.ff-hover-glow {
+    transition: box-shadow var(--ff-motion-medium), border-color var(--ff-motion-medium);
+}
+
+.ff-hover-glow:hover {
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+    /* Using primary color hex for now as fallback */
+    border-color: var(--ff-primary);
+}
+
+/* Specific button-like active state */
+.ff-active-shrink {
+    transition: transform var(--ff-motion-fast);
+}
+
+.ff-active-shrink:active {
+    transform: scale(0.95);
+}
+
+/* Motion Mixins (Classes used for composition) */
+.ff-transition-all {
+    transition: all var(--ff-motion-fast);
+}
+
+.ff-transition-colors {
+    transition: background-color var(--ff-motion-fast), border-color var(--ff-motion-fast), color var(--ff-motion-fast), box-shadow var(--ff-motion-fast);
+}

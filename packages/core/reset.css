@@ -1,0 +1,69 @@
+/* Modern CSS Reset */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+html {
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  scroll-behavior: smooth;
+  color-scheme: dark light;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--ff-surface);
+  color: var(--ff-text);
+  font-family: var(--ff-font-sans);
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul[role='list'], ol[role='list'] {
+  list-style: none;
+}
+
+a {
+  text-underline-offset: 0.2ex;
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, select, textarea {
+  background: transparent;
+  border: none;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+   scroll-behavior: auto;
+  }
+  
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FingguFlux Playground - Phase 5C Dropdown</title>
+    <link rel="stylesheet" href="../packages/core/index.css">
+    <link rel="stylesheet" href="../packages/motion/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        .playground-section {
+            padding-bottom: var(--ff-space-12);
+            border-bottom: 1px solid var(--ff-neutral-200);
+            margin-bottom: var(--ff-space-12);
+        }
+    </style>
+</head>
+
+<body class="ff-p-8 ff-bg-surface ff-text-base ff-font-sans">
+    <header class="ff-mb-16 ff-fade-in">
+        <h1 class="ff-text-5xl ff-font-black ff-text-primary ff-mb-2">FingguFlux</h1>
+        <p class="ff-text-xl ff-text-neutral-500 ff-slide-up">Phase 5C: Interactive Dropdown Component</p>
+    </header>
+
+    <main>
+        <!-- Dropdown Demo -->
+        <section class="playground-section ff-fade-in">
+            <h2 class="ff-text-2xl ff-font-bold ff-mb-4">Standard Dropdown</h2>
+            <p class="ff-mb-6 ff-text-neutral-600">Pure CSS positioning. Keyboard: Arrows, ESC, Enter. Outside click
+                closes.</p>
+
+            <div class="ff-dropdown" data-ff-state="closed">
+                <button class="ff-dropdown-trigger ff-btn ff-btn-outline ff-btn-md ff-transition-colors"
+                    aria-haspopup="true" aria-expanded="false" id="dropdown-btn-1">
+                    Options Menu
+                </button>
+                <div class="ff-dropdown-menu ff-card ff-shadow-lg ff-bg-surface ff-p-1" role="menu"
+                    aria-labelledby="dropdown-btn-1">
+                    <button class="ff-dropdown-item" role="menuitem">Profile Settings</button>
+                    <button class="ff-dropdown-item" role="menuitem">Billing History</button>
+                    <div class="ff-mb-1 ff-mt-1" style="height: 1px; background: var(--ff-neutral-200);"></div>
+                    <button class="ff-dropdown-item ff-text-error" role="menuitem">Logout</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dropdown Right Aligned -->
+        <section class="playground-section ff-slide-up">
+            <h2 class="ff-text-2xl ff-font-bold ff-mb-4">Right Aligned & Motion Composed</h2>
+            <div class="ff-flex ff-justify-end">
+                <div class="ff-dropdown" data-ff-state="closed">
+                    <button class="ff-dropdown-trigger ff-btn ff-btn-primary ff-btn-md ff-transition-all ff-hover-lift"
+                        aria-haspopup="true" aria-expanded="false" id="dropdown-btn-2">
+                        User Actions
+                    </button>
+                    <div class="ff-dropdown-menu ff-dropdown-menu-right ff-card ff-card-glass ff-shadow-xl ff-p-2"
+                        role="menu" aria-labelledby="dropdown-btn-2">
+                        <button class="ff-dropdown-item" role="menuitem">Account Overview</button>
+                        <button class="ff-dropdown-item" role="menuitem">Security Logs</button>
+                        <button class="ff-dropdown-item" role="menuitem">Support Ticket</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Existing Components Verification -->
+        <section class="playground-section ff-slide-up">
+            <h2 class="ff-text-2xl ff-font-bold ff-mb-4">Component Suite Stability</h2>
+            <div class="ff-flex ff-gap-4">
+                <button class="ff-btn ff-btn-primary" data-ff-toggle="modal" data-ff-target="formal-modal">Test
+                    Modal</button>
+                <div class="ff-tabs" role="tablist">
+                    <button class="ff-tab" data-ff-tab="t-1" data-ff-state="active" role="tab" tabindex="0">Tab
+                        A</button>
+                    <button class="ff-tab" data-ff-tab="t-2" data-ff-state="inactive" role="tab" tabindex="-1">Tab
+                        B</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Infrastructure -->
+    <div id="formal-modal" class="ff-modal" data-ff-state="closed" role="dialog" aria-modal="true"
+        aria-labelledby="modal-title-1">
+        <div class="ff-modal-overlay ff-fade-in" data-ff-toggle="modal" data-ff-target="formal-modal"></div>
+        <article class="ff-modal-content ff-card ff-shadow-xl ff-bg-surface ff-slide-up">
+            <div class="ff-card-header ff-flex ff-justify-between ff-items-center">
+                <h3 id="modal-title-1" class="ff-font-bold">System Status</h3>
+                <button class="ff-text-2xl ff-cursor-pointer" data-ff-toggle="modal"
+                    data-ff-target="formal-modal">&times;</button>
+            </div>
+            <div class="ff-card-body">
+                <p>Ensuring Dropdown logic doesn't interfere with Modal event delegation.</p>
+            </div>
+        </article>
+    </div>
+
+    <footer class="ff-mt-12 ff-text-sm ff-text-neutral-500 ff-mx-auto ff-fade-in">
+        FingguFlux UI Engine v1.1.0
+    </footer>
+
+    <script type="module" src="../packages/js-helper/index.js"></script>
+    <script type="module">
+        import { onToggle, focusTrap, lockScroll, unlockScroll } from '../packages/js-helper/index.js';
+
+        let activeTraps = new Map();
+
+        onToggle('modal', ({ target, isExpanded }) => {
+            if (isExpanded) {
+                lockScroll();
+                activeTraps.set(target.id, focusTrap(target));
+            } else {
+                unlockScroll();
+                const cleanup = activeTraps.get(target.id);
+                if (cleanup) cleanup();
+                activeTraps.delete(target.id);
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+/* Entry and Exit Animations */
+
+.ff-fade-in {
+    animation: ff-fade-in var(--ff-motion-medium) forwards;
+}
+
+.ff-slide-up {
+    animation: ff-slide-up var(--ff-motion-medium) var(--ff-motion-medium) backwards;
+    /* delayed to show staggered effect if used together */
+}
+
+.ff-scale-in {
+    animation: ff-scale-in var(--ff-motion-medium) forwards;
+}
+
+/* Utility to disable animations for prefers-reduced-motion is handled in reset.css */
+/* But we can provide explicit 'no-motion' overrides if needed */
+.ff-no-motion {
+    animation: none !important;
+    transition: none !important;
+}

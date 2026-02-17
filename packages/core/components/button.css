@@ -1,0 +1,93 @@
+/* Button Component */
+
+.ff-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--ff-font-medium);
+    border-radius: var(--ff-radius-md);
+    cursor: pointer;
+    border: var(--ff-border-width-1) solid transparent;
+    user-select: none;
+    white-space: nowrap;
+    /* Motion isolated - no transition by default */
+}
+
+/* Variants */
+.ff-btn-primary {
+    background-color: var(--ff-primary);
+    color: var(--ff-neutral-0);
+}
+
+.ff-btn-primary:hover,
+.ff-btn-primary-hover {
+    background-color: var(--ff-primary-700);
+}
+
+.ff-btn-secondary {
+    background-color: var(--ff-neutral-100);
+    color: var(--ff-neutral-900);
+    border-color: var(--ff-neutral-200);
+}
+
+.ff-btn-secondary:hover,
+.ff-btn-secondary-hover {
+    background-color: var(--ff-neutral-200);
+}
+
+.ff-btn-ghost {
+    background-color: transparent;
+    color: var(--ff-text);
+}
+
+.ff-btn-ghost:hover,
+.ff-btn-ghost-hover {
+    background-color: var(--ff-neutral-100);
+}
+
+.ff-btn-outline {
+    background-color: transparent;
+    color: var(--ff-primary);
+    border-color: var(--ff-primary);
+}
+
+.ff-btn-outline:hover,
+.ff-btn-outline-hover {
+    background-color: var(--ff-primary-50);
+}
+
+/* Sizes */
+.ff-btn-sm {
+    padding: var(--ff-space-1) var(--ff-space-3);
+    font-size: var(--ff-text-xs);
+}
+
+.ff-btn-md {
+    padding: var(--ff-space-2) var(--ff-space-4);
+    font-size: var(--ff-text-sm);
+}
+
+.ff-btn-lg {
+    padding: var(--ff-space-3) var(--ff-space-6);
+    font-size: var(--ff-text-base);
+}
+
+/* States - Flat Classes + Pseudo */
+.ff-btn:active,
+.ff-btn-active {
+    transform: scale(0.98);
+    /* Subtle internal state, doesn't require separate motion class but is isolated to active state */
+}
+
+.ff-btn:disabled,
+.ff-btn-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.ff-btn:focus-visible,
+.ff-btn-focus {
+    outline: var(--ff-border-width-2) solid var(--ff-primary);
+    outline-offset: var(--ff-ring-offset);
+}

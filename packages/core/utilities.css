@@ -1,0 +1,106 @@
+/* Utility Classes - Margin, Padding, Colors */
+
+/* Padding utilities */
+.ff-p-0 {
+    padding: var(--ff-space-0);
+}
+
+.ff-p-1 {
+    padding: var(--ff-space-1);
+}
+
+.ff-p-2 {
+    padding: var(--ff-space-2);
+}
+
+.ff-p-3 {
+    padding: var(--ff-space-3);
+}
+
+.ff-p-4 {
+    padding: var(--ff-space-4);
+}
+
+.ff-p-6 {
+    padding: var(--ff-space-6);
+}
+
+.ff-p-8 {
+    padding: var(--ff-space-8);
+}
+
+/* Margin utilities */
+.ff-m-0 {
+    margin: var(--ff-space-0);
+}
+
+.ff-m-1 {
+    margin: var(--ff-space-1);
+}
+
+.ff-m-2 {
+    margin: var(--ff-space-2);
+}
+
+.ff-m-4 {
+    margin: var(--ff-space-4);
+}
+
+.ff-mt-1 {
+    margin-top: var(--ff-space-1);
+}
+
+.ff-mt-2 {
+    margin-top: var(--ff-space-2);
+}
+
+.ff-mt-4 {
+    margin-top: var(--ff-space-4);
+}
+
+.ff-mb-1 {
+    margin-bottom: var(--ff-space-1);
+}
+
+.ff-mb-2 {
+    margin-bottom: var(--ff-space-2);
+}
+
+.ff-mb-4 {
+    margin-bottom: var(--ff-space-4);
+}
+
+/* Colors */
+.ff-bg-primary {
+    background-color: var(--ff-primary);
+    color: white;
+}
+
+.ff-bg-surface {
+    background-color: var(--ff-surface);
+}
+
+.ff-text-primary {
+    color: var(--ff-primary);
+}
+
+.ff-text-neutral-500 {
+    color: var(--ff-neutral-500);
+}
+
+/* Borders & Radius */
+.ff-border {
+    border: 1px solid var(--ff-neutral-200);
+}
+
+.ff-rounded-md {
+    border-radius: var(--ff-radius-md);
+}
+
+.ff-rounded-lg {
+    border-radius: var(--ff-radius-lg);
+}
+
+.ff-rounded-full {
+    border-radius: var(--ff-radius-full);
+}
