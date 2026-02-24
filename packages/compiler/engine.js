@@ -72,6 +72,15 @@ export class CompilerEngine {
 
     processCSS(cssContent) {
         let processed = cssContent;
+        this.stats = {
+            totalClasses: 0,
+            usedClasses: 0,
+            unusedClasses: 0,
+            originalSize: Buffer.byteLength(cssContent),
+            finalSize: 0,
+            extremeMappings: 0,
+            unusedList: []
+        };
 
         // 1. Identify all .ff- selectors in the source
         const classRegex = /\.ff-([\w-]+)/g;
@@ -80,13 +89,21 @@ export class CompilerEngine {
         while ((match = classRegex.exec(cssContent)) !== null) {
             foundInCSS.add(`ff-${match[1]}`);
         }
+        this.stats.totalClasses = foundInCSS.size;
 
         // 2. Generate mappings only for USED classes
         foundInCSS.forEach(cls => {
             if (this.usedClasses.has(cls)) {
                 this.generateMapping(cls);
+            } else {
+                this.stats.unusedList.push(cls);
             }
         });
+        this.stats.usedClasses = Object.keys(this.mapping).length;
+        this.stats.unusedClasses = this.stats.totalClasses - this.stats.usedClasses;
+        if (this.mode === 'ext') {
+            this.stats.extremeMappings = this.stats.usedClasses;
+        }
 
         // 3. Tree-shaking (Block-level pruning) - DO THIS FIRST while names are original
         const blocks = processed.split('}');
@@ -99,8 +116,6 @@ export class CompilerEngine {
             if (selector.includes('.ff-')) {
                 const ffClassesInSelector = selector.match(/\.ff-[\w-]+/g);
                 if (ffClassesInSelector) {
-                    // Prune block if ANY ff- class in the selector is unused
-                    // (Matches our strict tree-shaking policy for components/utilities)
                     const hasUnused = ffClassesInSelector.some(cls => {
                         const baseCls = cls.substring(1);
                         return !this.usedClasses.has(baseCls);
@@ -114,8 +129,6 @@ export class CompilerEngine {
         processed = filteredBlocks.join('}') + (filteredBlocks.length > 0 ? '}' : '');
 
         // 4. Replace selectors with mapped hashes
-        // NOTE: We explicitly DO NOT hash CSS variables starting with --ff-
-        // This ensures runtime theme switching remains operational.
         const sortedClasses = Object.keys(this.mapping).sort((a, b) => b.length - a.length);
         sortedClasses.forEach(cls => {
             const mapped = this.mapping[cls];
@@ -126,17 +139,37 @@ export class CompilerEngine {
             }
         });
 
-        // 5. Keyframe Pruning (Post-pruning)
-        return this.pruneKeyframes(processed);
+        // 5. Keyframe Pruning
+        processed = this.pruneKeyframes(processed);
+        this.stats.finalSize = Buffer.byteLength(processed);
+        return processed;
+    }
+
+    /**
+     * @returns {Object} v0.9.4 Intelligence Stats
+     */
+    getStats() {
+        return {
+            ...this.stats,
+            gzipEstimate: Math.round(this.stats.finalSize * 0.3) // Rough estimate for reporting
+        };
+    }
+
+    generateReport() {
+        return {
+            timestamp: new Date().toISOString(),
+            engineVersion: "0.9.6",
+            mode: this.mode,
+            stats: this.getStats(),
+            mapping: this.getMapping()
+        };
     }
 
     pruneKeyframes(css) {
-        // Find all referenced animation names
         const animationRegex = /animation(?:\-name)?\s*:\s*([^;!}]+)/g;
         const usedAnimations = new Set();
         let match;
         while ((match = animationRegex.exec(css)) !== null) {
-            // Split by space/comma and filter out durations/easings/etc
             const parts = match[1].split(/[,\s]+/).map(p => p.trim());
             parts.forEach(p => {
                 if (p && !/^\d|ms|s|infinite|linear|ease|both|forwards|backwards/.test(p)) {
@@ -145,7 +178,6 @@ export class CompilerEngine {
             });
         }
 
-        // Prune unused @keyframes blocks
         const keyframeBlocks = css.split(/@keyframes\s+([\w-]+)\s*\{/);
         if (keyframeBlocks.length <= 1) return css;
 
@@ -154,7 +186,6 @@ export class CompilerEngine {
             const name = keyframeBlocks[i];
             const contentAndRest = keyframeBlocks[i + 1];
 
-            // Find the end of this @keyframes block (handling nested braces if any)
             let braceCount = 1;
             let endOfBlock = -1;
             for (let j = 0; j < contentAndRest.length; j++) {
@@ -179,7 +210,6 @@ export class CompilerEngine {
     }
 
     getMapping() {
-        // Return sorted mapping for stability
         const sortedMapping = {};
         Object.keys(this.mapping).sort().forEach(key => {
             sortedMapping[key] = this.mapping[key];

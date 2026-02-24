@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>A11y Regression Test</title>
+</head>
+
+<body>
+    <!-- 1. Failing Accordion (Missing ARIA) -->
+    <button class="ff-accordion-header">No ARIA</button>
+
+    <!-- 2. Failing Accordion (Inconsistent State) -->
+    <button class="ff-accordion-header" data-ff-state="open" aria-expanded="false">Inconsistent</button>
+
+    <!-- 3. Passing Accordion -->
+    <button class="ff-accordion-header" data-ff-state="open" aria-expanded="true">Valid Open</button>
+    <button class="ff-accordion-header" data-ff-state="closed" aria-expanded="false">Valid Closed</button>
+
+    <!-- 4. Failing Modal (Missing Role) -->
+    <div class="ff-modal">No Role</div>
+
+    <!-- 5. Passing Modal -->
+    <div class="ff-modal" role="dialog" aria-modal="true">Valid Modal</div>
+</body>
+
+</html>

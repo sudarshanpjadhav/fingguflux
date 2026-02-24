@@ -23,12 +23,21 @@
     flex-direction: column;
 }
 
+.ff-flex-row {
+    flex-direction: row;
+}
+
 .ff-flex-wrap {
     flex-wrap: wrap;
 }
 
-.ff-items-center {
+.ff-items-center,
+.ff-align-center {
     align-items: center;
+}
+
+.ff-align-start {
+    align-items: flex-start;
 }
 
 .ff-justify-center {
@@ -72,6 +81,15 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+
+.ff-col-span-2 {
+    grid-column: span 2 / span 2;
+}
+
+.ff-col-span-3 {
+    grid-column: span 3 / span 3;
+}
+
 /* Container based adjustments (Modern approach) */
 @container (min-width: 640px) {
     .ff-c-grid-cols-2 {
@@ -95,6 +113,50 @@
     width: 100%;
 }
 
+.ff-w-auto {
+    width: auto;
+}
+
+.ff-h-full {
+    height: 100%;
+}
+
+.ff-h-auto {
+    height: auto;
+}
+
 .ff-max-w-screen-xl {
     max-width: var(--ff-container-xl);
+}
+
+/* 1.1 Layout Utilities (Expansion) */
+.ff-container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--ff-container-xl);
+}
+
+.ff-max-w-sm {
+    max-width: var(--ff-container-sm);
+}
+
+.ff-max-w-md {
+    max-width: var(--ff-container-md);
+}
+
+.ff-max-w-lg {
+    max-width: var(--ff-container-lg);
+}
+
+.ff-max-w-xl {
+    max-width: var(--ff-container-xl);
+}
+
+.ff-min-h-screen {
+    min-height: 100vh;
+}
+
+.ff-w-screen {
+    width: 100vw;
 }

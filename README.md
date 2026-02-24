@@ -5,7 +5,7 @@
 FingguFlux is a specialized architectural wrapper designed to solve "CSS Drift" in high-trust, large-scale applications. It enforces a strict separation between Design Tokens, Component State, and CSS Production through a deterministic hardening compiler.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-v0.9.0--beta-blue)](https://github.com/finggu/FingguFlux)
+[![Version](https://img.shields.io/badge/version-v0.9.1--beta-blue)](https://github.com/finggu/FingguFlux)
 
 ---
 
@@ -21,7 +21,7 @@ FingguFlux is a specialized architectural wrapper designed to solve "CSS Drift" 
 
 ### 1. Install
 ```bash
-npm install @finggu/core @finggu/react
+npm install @finggujadhav/core @finggujadhav/react
 ```
 
 ### 2. Configure Compiler (Vite)

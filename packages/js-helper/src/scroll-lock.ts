@@ -5,16 +5,11 @@
 let scrollPosition = 0;
 
 export const lockScroll = () => {
-    scrollPosition = window.pageYOffset;
+    scrollPosition = window.scrollY || window.pageYOffset;
     const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
 
     // Use a data attribute for styling instead of inline styles
     document.body.setAttribute('data-ff-scroll-lock', 'true');
-
-    // Support for browsers that don't support the attribute-based CSS we will add later
-    // We avoid inline styles where possible as per constraints, but scrollbar compensation 
-    // sometimes requires it if not using a global variable.
-    // We'll use a CSS variable instead.
     document.documentElement.style.setProperty('--ff-scrollbar-width', `${scrollbarWidth}px`);
 };
 

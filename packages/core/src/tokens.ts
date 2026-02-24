@@ -43,7 +43,6 @@ export const TOKENS = {
         Slow: '--ff-motion-slow'
     },
 
-    // Effects
     Effects: {
         ShadowSm: '--ff-shadow-sm',
         ShadowMd: '--ff-shadow-md',
@@ -52,6 +51,27 @@ export const TOKENS = {
         BlurMd: '--ff-blur-md',
         GlassHighlight: '--ff-glass-highlight',
         GlassBorder: '--ff-glass-border'
+    },
+
+    // Z-Index
+    ZIndex: {
+        10: '--ff-z-10',
+        20: '--ff-z-20',
+        50: '--ff-z-50'
+    },
+
+    // Position
+    Position: {
+        0: '--ff-pos-0',
+        Half: '--ff-pos-half'
+    },
+
+    // Opacity
+    Opacity: {
+        0: '--ff-opacity-0',
+        50: '--ff-opacity-50',
+        75: '--ff-opacity-75',
+        100: '--ff-opacity-100'
     }
 } as const;
 

@@ -1,6 +1,6 @@
 {
   "name": "fingguflux",
-  "version": "0.9.0",
+  "version": "0.9.6",
   "private": true,
   "description": "High-performance, headless UI engine.",
   "type": "module",
@@ -10,6 +10,7 @@
     "build:ext": "node ./packages/compiler/cli.js ext"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "packages/adapters/*"
   ]
 }

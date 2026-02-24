@@ -4,23 +4,23 @@
  */
 
 export const initTabs = () => {
-    document.addEventListener('click', (e) => {
-        const tab = e.target.closest('[data-ff-tab]');
+    document.addEventListener('click', (e: MouseEvent) => {
+        const tab = (e.target as HTMLElement).closest('[data-ff-tab]') as HTMLElement;
         if (!tab) return;
         activateTab(tab);
     });
 
-    document.addEventListener('keydown', (e) => {
-        const tab = e.target.closest('[data-ff-tab]');
+    document.addEventListener('keydown', (e: KeyboardEvent) => {
+        const tab = (e.target as HTMLElement).closest('[data-ff-tab]') as HTMLElement;
         if (!tab) return;
 
         const tablist = tab.closest('[role="tablist"]');
         if (!tablist) return;
 
-        const tabs = Array.from(tablist.querySelectorAll('[data-ff-tab]'));
+        const tabs = Array.from(tablist.querySelectorAll('[data-ff-tab]')) as HTMLElement[];
         const index = tabs.indexOf(tab);
 
-        let nextTab;
+        let nextTab: HTMLElement | undefined;
 
         switch (e.key) {
             case 'ArrowLeft':
@@ -41,16 +41,12 @@ export const initTabs = () => {
 
         if (nextTab) {
             nextTab.focus();
-            // Optional: Auto-activate on focus? 
-            // accessibility best practices suggest activation on Enter/Space OR arrow navigation
-            // We will follow the "manual" activation pattern for better screen reader UX
-            // unless the user clicks.
             e.preventDefault();
         }
     });
 };
 
-export const activateTab = (tab) => {
+export const activateTab = (tab: HTMLElement) => {
     const tablist = tab.closest('[role="tablist"]');
     if (!tablist) return;
 
@@ -66,13 +62,8 @@ export const activateTab = (tab) => {
     });
 
     // Update Panels
-    // We look for panels globally or within a shared container
-    // A common pattern is panels being siblings or in a sibling container.
-    // We'll search for Panels that match the ID.
     const allPanels = document.querySelectorAll('[data-ff-tab-panel]');
     allPanels.forEach(panel => {
-        // Only affect panels related to this specific tab set if possible
-        // but the ID link is usually unique.
         const panelId = panel.getAttribute('data-ff-tab-panel');
         const isTarget = panelId === tabId;
         panel.setAttribute('data-ff-state', isTarget ? 'active' : 'inactive');

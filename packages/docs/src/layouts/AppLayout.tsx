@@ -1,6 +1,6 @@
 import React from 'react';
-import { FingguProvider, Button, Card, Tabs, TabList, TabTrigger, TabContent } from '@finggu/react';
-import '@finggu/core/tokens.css';
+import { Button } from '@finggujadhav/react';
+import '@finggujadhav/core/index.css';
 
 /**
  * Premium documentation layout using FingguFlux internal components.
@@ -24,7 +24,10 @@ export const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children })
                 backgroundColor: 'var(--ff-surface)',
                 zIndex: 50
             }}>
-                <div style={{ fontWeight: 'bold', fontSize: '1.2rem' }}>FingguFlux</div>
+                <div style={{ fontWeight: 'bold', fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: 'var(--ff-space-2)' }}>
+                    FingguFlux
+                    <span style={{ fontSize: '0.7rem', padding: '2px 6px', backgroundColor: 'var(--ff-primary-100)', color: 'var(--ff-primary-700)', borderRadius: 'var(--ff-radius-sm)', fontWeight: 'bold' }}>v0.9.1</span>
+                </div>
                 <nav style={{ display: 'flex', gap: 'var(--ff-space-4)' }}>
                     <Button variant="secondary" size="md">Docs</Button>
                     <Button variant="secondary" size="md">Playground</Button>

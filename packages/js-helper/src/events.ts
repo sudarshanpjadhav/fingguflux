@@ -2,22 +2,22 @@
  * Event Delegation System
  * Handles global listeners for better performance and dynamic elements.
  */
-import { toggleAria } from './aria.js';
+import { toggleAria } from './aria';
 
-const registry = new Map();
+const registry = new Map<string, any[]>();
 
-export const onToggle = (type, callback) => {
+export const onToggle = (type: string, callback: (data: any) => void) => {
     if (!registry.has(type)) registry.set(type, []);
-    registry.get(type).push(callback);
+    registry.get(type)!.push(callback);
 };
 
 export const initEvents = () => {
     // Global Click Listener
-    document.addEventListener('click', (e) => {
-        const trigger = e.target.closest('[data-ff-toggle]');
+    document.addEventListener('click', (e: MouseEvent) => {
+        const trigger = (e.target as HTMLElement).closest('[data-ff-toggle]') as HTMLElement;
         if (!trigger) return;
 
-        const type = trigger.getAttribute('data-ff-toggle');
+        const type = trigger.getAttribute('data-ff-toggle') || 'default';
         const targetId = trigger.getAttribute('data-ff-target');
         const target = targetId ? document.getElementById(targetId) : null;
 
@@ -28,7 +28,7 @@ export const initEvents = () => {
 
             // Notify custom listeners
             if (registry.has(type)) {
-                registry.get(type).forEach(cb => cb({ trigger, target, isExpanded }));
+                registry.get(type)!.forEach(cb => cb({ trigger, target, isExpanded }));
             }
         }
     });

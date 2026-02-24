@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useMemo, useEffect, useRef } from 'react';
-import { setTheme, FingguTheme } from '@finggu/js-helper';
+import { setTheme, FingguTheme } from '@finggujadhav/js-helper';
 
 export interface FingguMapping {
     _version?: string;
@@ -66,7 +66,7 @@ export const FingguProvider: React.FC<FingguProviderProps> = ({
  * Hook to resolve FingguFlux classes to their mapped versions.
  */
 export const useFinggu = () => {
-    const { mapping, mode } = useContext(FingguContext);
+    const { mapping, mode, theme } = useContext(FingguContext);
 
     const resolve = (className: string): string => {
         if (mode === 'dev' || !mapping) return className;

@@ -1,6 +1,6 @@
 import { setContext, getContext } from 'svelte';
 import { writable, derived, type Readable } from 'svelte/store';
-import { setTheme, FingguTheme } from '@finggu/js-helper';
+import { setTheme, FingguTheme } from '@finggujadhav/js-helper';
 
 export interface FingguMapping {
     _version?: string;

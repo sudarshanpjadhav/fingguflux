@@ -1,0 +1,217 @@
+{
+    "$schema": "https://fingguflux.dev/schemas/tokens-registry.json",
+    "version": "0.9.6",
+    "frozen": true,
+    "_comment": "THIS FILE IS THE AUTHORITATIVE TOKEN CONTRACT. Do not remove or rename tokens without a deprecation cycle. Run 'finggu theme-check' to validate.",
+    "categories": {
+        "color-primary": {
+            "description": "Primary brand color scale (Blue 50–900) + semantic alias.",
+            "tokens": [
+                "--ff-primary-50",
+                "--ff-primary-100",
+                "--ff-primary-200",
+                "--ff-primary-300",
+                "--ff-primary-400",
+                "--ff-primary-500",
+                "--ff-primary-600",
+                "--ff-primary-700",
+                "--ff-primary-800",
+                "--ff-primary-900",
+                "--ff-primary"
+            ]
+        },
+        "color-semantic": {
+            "description": "Semantic feedback color aliases.",
+            "tokens": [
+                "--ff-secondary",
+                "--ff-danger",
+                "--ff-success",
+                "--ff-warning",
+                "--ff-info"
+            ]
+        },
+        "color-surface-success": {
+            "description": "Success surface, border and content triad.",
+            "tokens": [
+                "--ff-success-surface",
+                "--ff-success-border",
+                "--ff-success-content"
+            ]
+        },
+        "color-surface-warning": {
+            "description": "Warning surface, border and content triad.",
+            "tokens": [
+                "--ff-warning-surface",
+                "--ff-warning-border",
+                "--ff-warning-content"
+            ]
+        },
+        "color-surface-danger": {
+            "description": "Danger surface, border and content triad.",
+            "tokens": [
+                "--ff-danger-surface",
+                "--ff-danger-border",
+                "--ff-danger-content"
+            ]
+        },
+        "color-neutral": {
+            "description": "Neutral gray scale (0–1000) and default surface/text aliases.",
+            "tokens": [
+                "--ff-neutral-0",
+                "--ff-neutral-50",
+                "--ff-neutral-100",
+                "--ff-neutral-200",
+                "--ff-neutral-300",
+                "--ff-neutral-400",
+                "--ff-neutral-500",
+                "--ff-neutral-600",
+                "--ff-neutral-700",
+                "--ff-neutral-800",
+                "--ff-neutral-900",
+                "--ff-neutral-1000",
+                "--ff-surface",
+                "--ff-text"
+            ]
+        },
+        "spacing": {
+            "description": "Spacing / padding / margin scale (rem-based).",
+            "tokens": [
+                "--ff-space-0",
+                "--ff-space-1",
+                "--ff-space-2",
+                "--ff-space-3",
+                "--ff-space-4",
+                "--ff-space-5",
+                "--ff-space-6",
+                "--ff-space-8",
+                "--ff-space-10",
+                "--ff-space-12",
+                "--ff-space-16",
+                "--ff-space-20"
+            ]
+        },
+        "radius": {
+            "description": "Border-radius scale.",
+            "tokens": [
+                "--ff-radius-none",
+                "--ff-radius-sm",
+                "--ff-radius-md",
+                "--ff-radius-lg",
+                "--ff-radius-xl",
+                "--ff-radius-2xl",
+                "--ff-radius-full"
+            ]
+        },
+        "effects": {
+            "description": "Box-shadow, blur and glass-morphism tokens.",
+            "tokens": [
+                "--ff-shadow-sm",
+                "--ff-shadow-md",
+                "--ff-shadow-lg",
+                "--ff-shadow-xl",
+                "--ff-blur-md",
+                "--ff-glass-highlight",
+                "--ff-glass-border"
+            ]
+        },
+        "motion": {
+            "description": "Transition duration + easing combinations.",
+            "tokens": [
+                "--ff-motion-fast",
+                "--ff-motion-medium",
+                "--ff-motion-slow"
+            ]
+        },
+        "typography": {
+            "description": "Font-family stacks.",
+            "tokens": [
+                "--ff-font-sans",
+                "--ff-font-mono"
+            ]
+        },
+        "border": {
+            "description": "Border widths and focus-ring metrics.",
+            "tokens": [
+                "--ff-border-width-1",
+                "--ff-border-width-2",
+                "--ff-ring-width",
+                "--ff-ring-offset"
+            ]
+        },
+        "z-index": {
+            "description": "Layering / stacking-context scale.",
+            "tokens": [
+                "--ff-z-10",
+                "--ff-z-20",
+                "--ff-z-50"
+            ]
+        },
+        "position": {
+            "description": "Commonly repeated position values.",
+            "tokens": [
+                "--ff-pos-0",
+                "--ff-pos-half"
+            ]
+        },
+        "opacity": {
+            "description": "Opacity scale.",
+            "tokens": [
+                "--ff-opacity-0",
+                "--ff-opacity-50",
+                "--ff-opacity-75",
+                "--ff-opacity-100"
+            ]
+        }
+    },
+    "theming": {
+        "light": {
+            "description": "Tokens that MUST be defined in the light / :root context.",
+            "required": [
+                "--ff-primary",
+                "--ff-secondary",
+                "--ff-danger",
+                "--ff-success",
+                "--ff-warning",
+                "--ff-info",
+                "--ff-surface",
+                "--ff-text",
+                "--ff-neutral-0",
+                "--ff-neutral-50",
+                "--ff-neutral-900",
+                "--ff-success-surface",
+                "--ff-success-border",
+                "--ff-success-content",
+                "--ff-warning-surface",
+                "--ff-warning-border",
+                "--ff-warning-content",
+                "--ff-danger-surface",
+                "--ff-danger-border",
+                "--ff-danger-content"
+            ]
+        },
+        "dark": {
+            "description": "Tokens that MUST be overridden in [data-ff-theme='dark'] and @media(prefers-color-scheme:dark).",
+            "required": [
+                "--ff-surface",
+                "--ff-text",
+                "--ff-primary",
+                "--ff-neutral-0",
+                "--ff-neutral-50",
+                "--ff-neutral-900"
+            ]
+        },
+        "system": {
+            "description": "Tokens resolved via @media(prefers-color-scheme:dark) — must mirror the 'dark' required set.",
+            "required": [
+                "--ff-surface",
+                "--ff-text",
+                "--ff-primary",
+                "--ff-neutral-0",
+                "--ff-neutral-50",
+                "--ff-neutral-900"
+            ]
+        }
+    },
+    "deprecations": [],
+    "renames": []
+}

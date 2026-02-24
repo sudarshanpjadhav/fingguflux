@@ -5,9 +5,9 @@
 
 export const initDropdowns = () => {
     // Global Click Listener for Event Delegation
-    document.addEventListener('click', (e) => {
-        const trigger = e.target.closest('.ff-dropdown-trigger');
-        const dropdown = e.target.closest('.ff-dropdown');
+    document.addEventListener('click', (e: MouseEvent) => {
+        const trigger = (e.target as HTMLElement).closest('.ff-dropdown-trigger') as HTMLElement;
+        const dropdown = (e.target as HTMLElement).closest('.ff-dropdown') as HTMLElement;
 
         // Handle clicks on triggers
         if (trigger && dropdown) {
@@ -24,9 +24,9 @@ export const initDropdowns = () => {
     });
 
     // Global Keydown Listener
-    document.addEventListener('keydown', (e) => {
-        const activeElement = document.activeElement;
-        const dropdown = activeElement.closest('.ff-dropdown');
+    document.addEventListener('keydown', (e: KeyboardEvent) => {
+        const activeElement = document.activeElement as HTMLElement;
+        const dropdown = activeElement ? activeElement.closest('.ff-dropdown') as HTMLElement : null;
 
         if (!dropdown) {
             if (e.key === 'Escape') closeAllDropdowns();
@@ -34,13 +34,13 @@ export const initDropdowns = () => {
         }
 
         const state = dropdown.getAttribute('data-ff-state');
-        const trigger = dropdown.querySelector('.ff-dropdown-trigger');
-        const items = Array.from(dropdown.querySelectorAll('.ff-dropdown-item'));
+        const trigger = dropdown.querySelector('.ff-dropdown-trigger') as HTMLElement;
+        const items = Array.from(dropdown.querySelectorAll('.ff-dropdown-item')) as HTMLElement[];
         const currentIndex = items.indexOf(activeElement);
 
         if (e.key === 'Escape') {
             setDropdownState(dropdown, 'closed');
-            trigger.focus(); // Return focus to trigger
+            if (trigger) trigger.focus(); // Return focus to trigger
             e.preventDefault();
             return;
         }
@@ -73,7 +73,7 @@ export const initDropdowns = () => {
     });
 };
 
-const setDropdownState = (dropdown, state) => {
+const setDropdownState = (dropdown: HTMLElement, state: string) => {
     dropdown.setAttribute('data-ff-state', state);
     const trigger = dropdown.querySelector('.ff-dropdown-trigger');
     if (trigger) {
@@ -83,5 +83,5 @@ const setDropdownState = (dropdown, state) => {
 
 const closeAllDropdowns = () => {
     const openDropdowns = document.querySelectorAll('.ff-dropdown[data-ff-state="open"]');
-    openDropdowns.forEach(dropdown => setDropdownState(dropdown, 'closed'));
+    openDropdowns.forEach(dropdown => setDropdownState(dropdown as HTMLElement, 'closed'));
 };

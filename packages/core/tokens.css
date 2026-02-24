@@ -19,6 +19,19 @@
   --ff-warning: #f59e0b;
   --ff-info: #06b6d4;
 
+  /* --- Semantic Surfaces --- */
+  --ff-success-surface: #f0fdf4;
+  --ff-success-border: #bbf7d0;
+  --ff-success-content: #166534;
+
+  --ff-warning-surface: #fffbeb;
+  --ff-warning-border: #fef3c7;
+  --ff-warning-content: #92400e;
+
+  --ff-danger-surface: #fef2f2;
+  --ff-danger-border: #fecaca;
+  --ff-danger-content: #991b1b;
+
   /* --- Neutral --- */
   --ff-neutral-0: #ffffff;
   --ff-neutral-50: #f8fafc;
@@ -83,6 +96,21 @@
   --ff-border-width-2: 2px;
   --ff-ring-width: 3px;
   --ff-ring-offset: 2px;
+
+  /* --- Z-Index --- */
+  --ff-z-10: 10;
+  --ff-z-20: 20;
+  --ff-z-50: 50;
+
+  /* --- Positions --- */
+  --ff-pos-0: 0;
+  --ff-pos-half: 50%;
+
+  /* --- Opacity --- */
+  --ff-opacity-0: 0;
+  --ff-opacity-50: 0.5;
+  --ff-opacity-75: 0.75;
+  --ff-opacity-100: 1;
 }
 
 /* Dark Mode (System Fallback + Explicit Manual) */

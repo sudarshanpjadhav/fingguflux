@@ -7,7 +7,7 @@ Get FingguFlux up and running in minutes.
 Install the core engine and your preferred adapter:
 
 ```bash
-npm install @finggu/core @finggu/react
+npm install @finggujadhav/core @finggujadhav/react
 ```
 
 ## 2. Configure the Compiler
