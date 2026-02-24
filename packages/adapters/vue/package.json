@@ -1,6 +1,6 @@
 {
     "name": "@finggujadhav/vue",
-    "version": "0.9.6",
+    "version": "0.9.7",
     "description": "Vue adapter for FingguFlux UI library",
     "main": "dist/index.js",
     "module": "src/index.ts",
@@ -19,8 +19,8 @@
         }
     },
     "dependencies": {
-        "@finggujadhav/core": "0.9.6",
-        "@finggujadhav/js-helper": "0.9.6"
+        "@finggujadhav/core": "0.9.7",
+        "@finggujadhav/js-helper": "0.9.7"
     },
     "peerDependencies": {
         "vue": ">=3.0.0"

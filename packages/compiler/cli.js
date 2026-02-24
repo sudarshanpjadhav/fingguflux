@@ -1,13 +1,16 @@
 #!/usr/bin/env node
 /**
  * FingguFlux CLI
- * v0.9.6 Theme Engine Stabilization & Contract Freeze
+ * v0.9.7-RC Release Candidate Preparation
  */
 import fs from 'fs';
 import path from 'path';
 import { scanFiles, getProjectFiles } from './scanner.js';
 import { CompilerEngine } from './engine.js';
 import { runThemeCheck, printThemeCheckReport } from './theme-check.js';
+import {
+    generateSnapshot, writeSnapshot, runSnapshotCompare, printSnapshotReport
+} from './snapshot.js';
 
 const args = process.argv.slice(2);
 const command = args[0] || 'build';
@@ -38,9 +41,12 @@ async function main() {
         case 'theme-check':
             await runThemeCheckCommand();
             break;
+        case 'snapshot':
+            await runSnapshotCommand();
+            break;
         default:
             console.error(`Unknown command: ${command}`);
-            console.log('Available commands: build, analyze, doctor, a11y, theme-check');
+            console.log('Available commands: build, analyze, doctor, a11y, theme-check, snapshot');
             process.exit(1);
     }
 }
@@ -251,6 +257,42 @@ async function runThemeCheckCommand() {
     printThemeCheckReport(result, { verbose });
 
     if (!result.pass) process.exit(1);
+}
+
+async function runSnapshotCommand() {
+    const doWrite = args.includes('--write');
+    const doCompare = args.includes('--compare');
+    const verbose = args.includes('--verbose');
+
+    if (!doWrite && !doCompare) {
+        console.error('Usage: finggu snapshot --write   (generate/update baseline)');
+        console.error('       finggu snapshot --compare (CI break-guard diff)');
+        process.exit(1);
+    }
+
+    if (doWrite) {
+        console.log('\n📸 Generating API surface snapshot…');
+        const snap = writeSnapshot();
+        const dim = snap.surface;
+        console.log(`  ✅ CSS tokens    : ${dim.cssTokens.length}`);
+        console.log(`  ✅ JS exports    : ${dim.jsExports.length}`);
+        console.log(`  ✅ CLI commands  : ${dim.cliCommands.length}`);
+        console.log(`  ✅ Component CSS : ${dim.componentFiles.length}`);
+        console.log(`\n✨ Snapshot written → packages/core/API_SURFACE_SNAPSHOT.json  (v${snap.version})\n`);
+        return;
+    }
+
+    if (doCompare) {
+        let report;
+        try {
+            report = runSnapshotCompare();
+        } catch (e) {
+            console.error('\n❌', e.message);
+            process.exit(1);
+        }
+        printSnapshotReport(report, verbose);
+        if (!report.pass) process.exit(1);
+    }
 }
 
 main().catch(err => {

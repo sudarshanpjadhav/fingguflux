@@ -1,6 +1,6 @@
 {
     "name": "@finggujadhav/compiler",
-    "version": "0.9.6",
+    "version": "0.9.7",
     "description": "The FingguFlux static analysis and selector hardening engine.",
     "main": "engine.js",
     "bin": {
@@ -11,12 +11,15 @@
         "scanner.js",
         "cli.js",
         "a11y.js",
-        "theme-check.js"
+        "theme-check.js",
+        "snapshot.js"
     ],
     "type": "module",
     "scripts": {
         "test": "node --test test/theme-check.test.js",
-        "test:all": "node --test test/**/*.test.js"
+        "test:snapshot": "node --test test/snapshot.test.js",
+        "test:all": "node --test test/**/*.test.js",
+        "release-check": "node cli.js theme-check && node cli.js snapshot --compare"
     },
     "engines": {
         "node": ">=16.0.0"

@@ -1,13 +1,15 @@
 {
     "name": "@finggujadhav/core",
-    "version": "0.9.6",
+    "version": "0.9.7",
     "description": "FingguFlux core design tokens and fundamental CSS architecture.",
     "main": "index.css",
     "files": [
         "*.css",
         "components/*.css",
         "src/tokens.ts",
-        "TOKENS_REGISTRY.json"
+        "TOKENS_REGISTRY.json",
+        "API_SURFACE_SNAPSHOT.json",
+        "DEPRECATION_LOG.json"
     ],
     "exports": {
         ".": "./index.css",

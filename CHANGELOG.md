@@ -2,6 +2,20 @@
 
 All notable changes to FingguFlux will be documented in this file.
 
+## [0.9.7] - 2026-02-24
+### Added
+- Release Candidate 1 — API Surface Contract & Deprecation Enforcement:
+  - `API_SURFACE_SNAPSHOT.json` — machine-readable baseline of the full public API surface (83 CSS tokens, 14 JS exports, 6 CLI commands, 11 component CSS files).
+  - `finggu snapshot --write` — CLI command to generate/update the snapshot baseline.
+  - `finggu snapshot --compare` — CI breaking-change guard; diffs current API surface against stored baseline, fails on any removal and warns on additions.
+  - `DEPRECATION_LOG.json` — formal deprecation ledger published with `@finggujadhav/core`; CI enforces overdue entries as breaking changes.
+  - `VERSION_POLICY.md` — canonical versioning policy: semver rules, deprecation lifecycle, release gate checklist, breaking change definitions.
+  - 30-test regression suite (`node --test`) covering CSS token extraction, TS export extraction, surface diffing, breaking-change detection, and addition warnings (REG-007, REG-008).
+- `finggu snapshot` added as 6th CLI command (alongside: build, analyze, doctor, a11y, theme-check).
+- `snapshot.js` published with `@finggujadhav/compiler`.
+- No breaking changes; fully backward compatible.
+- Contract freeze maintained — `finggu theme-check` and `finggu snapshot --compare` both pass green.
+
 ## [0.9.6] - 2026-02-24
 ### Added
 - Theme Engine Stabilization & Contract Freeze:

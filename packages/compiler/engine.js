@@ -158,7 +158,7 @@ export class CompilerEngine {
     generateReport() {
         return {
             timestamp: new Date().toISOString(),
-            engineVersion: "0.9.6",
+            engineVersion: "0.9.7",
             mode: this.mode,
             stats: this.getStats(),
             mapping: this.getMapping()
