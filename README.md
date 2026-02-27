@@ -2,10 +2,14 @@
 
 ### The Transparent UI Hardening Engine
 
-FingguFlux is a specialized architectural wrapper designed to solve "CSS Drift" in high-trust, large-scale applications. It enforces a strict separation between Design Tokens, Component State, and CSS Production through a deterministic hardening compiler.
+FingguFlux is a zero-runtime CSS hardening engine that prevents silent UI breakage in production.
+
+Most CSS frameworks fail silently.
+FingguFlux fails loudly — before your users ever see the bug.
+Designed for long-lived production systems, design systems, and enterprise-scale frontends.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-v0.9.1--beta-blue)](https://github.com/finggu/FingguFlux)
+[![npm version](https://img.shields.io/npm/v/@finggujadhav/core)](https://www.npmjs.com/package/@finggujadhav/core)
 
 ---
 
@@ -16,6 +20,77 @@ FingguFlux is a specialized architectural wrapper designed to solve "CSS Drift" 
 - **Architectural Parity**: Identical behavior and hardening across **React**, **Vue**, and **Svelte**.
 - **Token Isolation**: Nested themes ("Token Tunnels") that prevent style bleeding.
 - **Motion Orchestration**: Performance-optimized, accessible motion tokens.
+
+## 🔥 The CSS Drift Problem
+
+### 🎥 10-Second Demo — Silent Drift vs. Contract Enforcement
+![CSS Drift Demo](docs/assets/css-drift-demo.gif)
+Traditional CSS frameworks allow **silent style drift**. When a design token is renamed or removed, production styles break without any CLI warnings or build failures.
+
+| Feature | Traditional CSS | FingguFlux |
+| :--- | :--- | :--- |
+| **Token Renaming** | Silent UI breakage | **CLI Error (Contract Violation)** |
+| **Impact Detection** | Manual QA | **Automated Snapshots** |
+| **Theme Integrity** | Hard to maintain | **Verified by Design Contract** |
+
+## 🏢 Why This Matters at Scale
+
+CSS Drift becomes dangerous when:
+
+- Large teams modify tokens weekly
+- Multiple themes exist (light/dark/system)
+- Design systems live for years
+- Component libraries are shared across apps
+
+Without enforcement → silent breakage.
+With FingguFlux → build-time contract validation.
+
+### Real CLI Detection Output
+
+When a token is removed or renamed, FingguFlux does not fail silently.
+
+Instead, the build stops immediately and reports the violation:
+
+![CSS Drift Detection CLI](docs/assets/css-drift-cli.png)
+
+> Most CSS frameworks fail silently. FingguFlux fails loudly — before production.
+
+
+> [!IMPORTANT]
+> FingguFlux enforces a "Design Contract". If a component expects a token that no longer exists in your theme, the build **fails** immediately, preventing broken UI from reaching your users.
+
+### 🔴 Silent Breakage Example
+In traditional CSS, renaming `--primary-color` to `--brand-color` leaves your buttons invisible or unstyled because the CSS class still points to the old variable.
+
+### 🟢 Contract Enforcement
+With FingguFlux, running `finggu snapshot --compare` detects that `ff-btn-primary` is referencing a missing token and blocks the deployment.
+
+---
+
+## 🧱 Core Philosophy
+
+FingguFlux enforces three hard rules:
+
+1. Tokens are contracts.
+2. State is attribute-driven.
+3. CSS must be deterministic.
+
+No silent overrides.
+No implicit dependencies.
+No runtime patching.
+
+
+## ❌ When Not To Use FingguFlux
+
+FingguFlux may not be necessary if:
+
+- You are building a small static website.
+- You do not use design tokens.
+- You do not require strict contract enforcement.
+
+FingguFlux is built for long-lived, production-grade systems.
+
+
 
 ## 📦 Quick Start (2 Minutes)
 
@@ -47,6 +122,24 @@ export default function App() {
 }
 ```
 
+## 🕹️ Try it Locally
+
+Explore the interactive **CSS Drift Demo** to see FingguFlux in action:
+
+1. Open `docs/css-drift-demo.html` in your browser.
+2. Click **"REDUCE TO CHAOS"** to witness silent breakage vs. contract enforcement.
+3. Run the following commands in your terminal to see the CLI in action (requires local build):
+   ```bash
+   # Create a baseline of your current design tokens
+   npx finggu snapshot
+
+   # Compare changes and detect drift
+   npx finggu snapshot --compare
+
+   # Audit your theme for unused or missing tokens
+   npx finggu theme-check
+   ```
+
 ## 🛠 Project Structure
 
 - `packages/core`: Standardized tokens, CSS reset, and fundamental components.
@@ -60,4 +153,5 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
 
+If FingguFlux helps you ship safer UI, consider ⭐ starring the repository to support the project.
 Built with 🧠 by the Finggu Infotech Team.

@@ -1,7 +1,7 @@
 {
     "$schema": "https://fingguflux.dev/schemas/api-surface-snapshot.json",
-    "generatedAt": "2026-02-24T05:44:12.269Z",
-    "version": "0.9.7",
+    "generatedAt": "2026-02-27T09:00:27.644Z",
+    "version": "0.9.8",
     "surface": {
         "cssTokens": [
             "--ff-blur-md",

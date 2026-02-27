@@ -1,12 +1,16 @@
 {
     "name": "@finggujadhav/compiler",
-    "version": "0.9.7",
+    "version": "0.9.8",
     "description": "The FingguFlux static analysis and selector hardening engine.",
-    "main": "engine.js",
+    "main": "index.js",
+    "exports": {
+        ".": "./index.js"
+    },
     "bin": {
         "finggu": "cli.js"
     },
     "files": [
+        "index.js",
         "engine.js",
         "scanner.js",
         "cli.js",

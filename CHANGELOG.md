@@ -1,6 +1,17 @@
 # Changelog
 
 All notable changes to FingguFlux will be documented in this file.
+ 
+## [0.9.8] - 2026-02-27
+### Added
+- **Compiler Intelligence**:
+  - New `fingguCompiler` Vite plugin bridge for automated, zero-config contract hardening in Vite/Next.js workflows.
+  - Standardized entry point `index.js` for `@finggujadhav/compiler` allowing programmatic usage.
+- **Documentation**:
+  - New "CSS Drift Problem" diagnostic section in README.
+  - New interactive `css-drift-demo.html` for visual validation of contract enforcement.
+### Fixed
+- **API Stability**: Restored accidentally missing `--ff-primary-500` token to `packages/core/tokens.css`, maintaining full backward compatibility and passing drift audit.
 
 ## [0.9.7] - 2026-02-24
 ### Added

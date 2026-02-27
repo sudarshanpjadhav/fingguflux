@@ -217,3 +217,44 @@ export class CompilerEngine {
         return sortedMapping;
     }
 }
+
+/**
+ * Vite Plugin Bridge for FingguFlux Compiler
+ */
+export function fingguCompiler(options = {}) {
+    const mode = options.mode || 'dev';
+    const engine = new CompilerEngine({ mode });
+
+    return {
+        name: 'finggu-compiler',
+        enforce: 'post',
+        apply: 'build',
+        async transform(code, id) {
+            // Scan only source files for ff-* classes
+            if (id.includes('node_modules')) return;
+            if (!id.match(/\.[jt]sx?$/)) return;
+
+            const matches = code.match(/ff-[\w-]+/g);
+            if (matches) {
+                matches.forEach(cls => engine.usedClasses.add(cls));
+                engine.resolveDependencies();
+            }
+            return null;
+        },
+        async generateBundle() {
+            // Ensure all collected classes have mappings
+            engine.usedClasses.forEach(cls => engine.generateMapping(cls));
+
+            const mapping = engine.getMapping();
+
+            // Emit mapping.json
+            this.emitFile({
+                type: 'asset',
+                fileName: 'finggu-mapping.json',
+                source: JSON.stringify(mapping, null, 2)
+            });
+
+            console.log(`\n✨ [FingguFlux] Contract hardened: ${Object.keys(mapping).length} classes mapped in ${mode} mode.`);
+        }
+    };
+}

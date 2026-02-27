@@ -1,6 +1,6 @@
 {
     "name": "@finggujadhav/core",
-    "version": "0.9.7",
+    "version": "0.9.8",
     "description": "FingguFlux core design tokens and fundamental CSS architecture.",
     "main": "index.css",
     "files": [

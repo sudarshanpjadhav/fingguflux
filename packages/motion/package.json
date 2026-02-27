@@ -1,6 +1,6 @@
 {
     "name": "@finggujadhav/motion",
-    "version": "0.9.7",
+    "version": "0.9.8",
     "description": "FingguFlux motion primitives and utility animations.",
     "main": "index.css",
     "files": [
