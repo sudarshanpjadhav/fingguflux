@@ -1,6 +1,6 @@
 {
     "name": "@finggujadhav/react",
-    "version": "0.9.8",
+    "version": "0.9.9",
     "description": "FingguFlux React Adapter - Zero-runtime, high-performance headless UI components.",
     "type": "module",
     "main": "./dist/index.js",
@@ -22,8 +22,8 @@
         "!src/**/__tests__"
     ],
     "dependencies": {
-        "@finggujadhav/core": "0.9.8",
-        "@finggujadhav/js-helper": "0.9.8"
+        "@finggujadhav/core": "0.9.9",
+        "@finggujadhav/js-helper": "0.9.9"
     },
     "peerDependencies": {
         "react": ">=16.8.0",
