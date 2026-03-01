@@ -1,0 +1,11 @@
+/* Divider Component - Modular Architecture */
+
+.ff-divider {
+    width: 100%;
+    height: var(--ff-border-width-1);
+    background-color: var(--ff-neutral-200);
+    border: none;
+    display: block;
+}
+
+/* Note: Spacing should be applied via ff-m* utilities */

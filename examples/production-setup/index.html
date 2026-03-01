@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FingguFlux Production Setup Example</title>
+    <!-- Importing the compiled production CSS -->
+    <link rel="stylesheet" href="../../dist/index.css">
+    <style>
+        body {
+            padding: var(--ff-space-8);
+        }
+    </style>
+</head>
+
+<body class="ff-bg-surface ff-text-base">
+    <div class="ff-container ff-mx-auto">
+        <header class="ff-mb-8">
+            <h1 class="ff-text-4xl ff-font-bold ff-text-primary">FingguFlux Production-Grade Architecture</h1>
+            <p class="ff-text-neutral-500 ff-mt-2">Demonstrating modular builds and PostCSS integration.</p>
+        </header>
+
+        <main class="ff-grid ff-grid-cols-1 ff-c-grid-cols-2 ff-gap-8">
+            <!-- Modular Card -->
+            <section class="ff-card ff-shadow-md">
+                <div class="ff-card-header">
+                    <h2 class="ff-text-xl ff-font-semibold">Tree-Shakable Utilities</h2>
+                </div>
+                <div class="ff-card-body">
+                    <p>FingguFlux is now organized into modular source files, allow you to import only what you need
+                        during the build process.</p>
+                    <div class="ff-flex ff-gap-2 ff-mt-4">
+                        <span class="ff-badge ff-badge-primary">Modular</span>
+                        <span class="ff-badge ff-badge-success">Optimized</span>
+                        <span class="ff-badge ff-badge-neutral">Fast</span>
+                    </div>
+                </div>
+                <div class="ff-card-footer">
+                    <button class="ff-btn ff-btn-primary ff-btn-md">Learn More</button>
+                </div>
+            </section>
+
+            <!-- Status Info -->
+            <section class="ff-alert ff-alert-success">
+                <div>
+                    <strong class="ff-block">System Status: Optimal</strong>
+                    <span>All core modules (base, tokens, components, utilities) are currently active and compiled with
+                        PostCSS.</span>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

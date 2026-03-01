@@ -1,0 +1,212 @@
+/* Utility Classes - Margin, Padding, Colors */
+
+/* Padding utilities */
+.ff-p-0 {
+    padding: var(--ff-space-0);
+}
+
+.ff-p-1 {
+    padding: var(--ff-space-1);
+}
+
+.ff-p-2 {
+    padding: var(--ff-space-2);
+}
+
+.ff-p-3 {
+    padding: var(--ff-space-3);
+}
+
+.ff-p-4 {
+    padding: var(--ff-space-4);
+}
+
+.ff-p-6 {
+    padding: var(--ff-space-6);
+}
+
+.ff-p-8 {
+    padding: var(--ff-space-8);
+}
+
+/* Margin utilities */
+.ff-m-0 {
+    margin: var(--ff-space-0);
+}
+
+.ff-m-1 {
+    margin: var(--ff-space-1);
+}
+
+.ff-m-2 {
+    margin: var(--ff-space-2);
+}
+
+.ff-m-4 {
+    margin: var(--ff-space-4);
+}
+
+.ff-mt-1 {
+    margin-top: var(--ff-space-1);
+}
+
+.ff-mt-2 {
+    margin-top: var(--ff-space-2);
+}
+
+.ff-mt-4 {
+    margin-top: var(--ff-space-4);
+}
+
+.ff-mb-1 {
+    margin-bottom: var(--ff-space-1);
+}
+
+.ff-mb-2 {
+    margin-bottom: var(--ff-space-2);
+}
+
+.ff-mb-4 {
+    margin-bottom: var(--ff-space-4);
+}
+
+/* Colors */
+.ff-bg-primary {
+    background-color: var(--ff-primary);
+    color: var(--ff-neutral-0);
+}
+
+.ff-bg-surface {
+    background-color: var(--ff-surface);
+}
+
+.ff-text-primary {
+    color: var(--ff-primary);
+}
+
+.ff-text-neutral-500 {
+    color: var(--ff-neutral-500);
+}
+
+/* Borders & Radius */
+.ff-border {
+    border: var(--ff-border-width-1) solid var(--ff-neutral-200);
+}
+
+.ff-rounded-md {
+    border-radius: var(--ff-radius-md);
+}
+
+.ff-rounded-lg {
+    border-radius: var(--ff-radius-lg);
+}
+
+.ff-rounded-full {
+    border-radius: var(--ff-radius-full);
+}
+
+/* Position Utilities */
+.ff-relative {
+    position: relative;
+}
+
+.ff-absolute {
+    position: absolute;
+}
+
+.ff-fixed {
+    position: fixed;
+}
+
+.ff-top-0 {
+    top: var(--ff-pos-0);
+}
+
+.ff-top-1\/2 {
+    top: var(--ff-pos-half);
+}
+
+.ff-left-0 {
+    left: var(--ff-pos-0);
+}
+
+.ff-right-0 {
+    right: var(--ff-pos-0);
+}
+
+.ff-bottom-0 {
+    bottom: var(--ff-pos-0);
+}
+
+.ff-z-10 {
+    z-index: var(--ff-z-10);
+}
+
+.ff-z-20 {
+    z-index: var(--ff-z-20);
+}
+
+.ff-z-50 {
+    z-index: var(--ff-z-50);
+}
+
+/* Display Utilities */
+.ff-block {
+    display: block;
+}
+
+.ff-inline {
+    display: inline;
+}
+
+.ff-inline-block {
+    display: inline-block;
+}
+
+.ff-hidden {
+    display: none;
+}
+
+/* Overflow Utilities */
+.ff-overflow-hidden {
+    overflow: hidden;
+}
+
+.ff-overflow-auto {
+    overflow: auto;
+}
+
+.ff-overflow-scroll {
+    overflow: scroll;
+}
+
+/* Aspect Ratio Utilities */
+.ff-aspect-1 {
+    aspect-ratio: 1 / 1;
+}
+
+.ff-aspect-16-9 {
+    aspect-ratio: 16 / 9;
+}
+
+/* Cursor Utilities */
+.ff-cursor-pointer {
+    cursor: pointer;
+}
+
+.ff-cursor-not-allowed {
+    cursor: not-allowed;
+}
+
+/* Opacity Utilities */
+.ff-opacity-50 {
+    opacity: var(--ff-opacity-50);
+}
+
+.ff-opacity-75 {
+    opacity: var(--ff-opacity-75);
+}
+
+.ff-opacity-100 {
+    opacity: var(--ff-opacity-100);
+}

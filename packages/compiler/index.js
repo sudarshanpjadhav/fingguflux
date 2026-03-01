@@ -1,2 +1,3 @@
-export { fingguCompiler } from './engine.js';
-export * from './engine.js';
+import { fingguCompiler } from './engine.js'
+
+export default fingguCompiler

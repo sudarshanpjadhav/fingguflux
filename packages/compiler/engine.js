@@ -157,7 +157,6 @@ export class CompilerEngine {
 
     generateReport() {
         return {
-            timestamp: new Date().toISOString(),
             engineVersion: "0.9.7",
             mode: this.mode,
             stats: this.getStats(),
@@ -253,8 +252,6 @@ export function fingguCompiler(options = {}) {
                 fileName: 'finggu-mapping.json',
                 source: JSON.stringify(mapping, null, 2)
             });
-
-            console.log(`\n✨ [FingguFlux] Contract hardened: ${Object.keys(mapping).length} classes mapped in ${mode} mode.`);
         }
     };
 }

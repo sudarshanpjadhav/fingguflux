@@ -225,8 +225,9 @@ export function extractTokensByScope(css) {
  */
 export function loadRegistry() {
     const candidates = [
-        path.resolve('./packages/core/TOKENS_REGISTRY.json'),
-        path.resolve('../../packages/core/TOKENS_REGISTRY.json'),
+        path.resolve('./src/metadata/TOKENS_REGISTRY.json'),
+        path.resolve('../../src/metadata/TOKENS_REGISTRY.json'),
+        path.resolve('./packages/core/TOKENS_REGISTRY.json'), // Legacy fallback
         path.resolve('./node_modules/@finggujadhav/core/TOKENS_REGISTRY.json'),
     ];
 

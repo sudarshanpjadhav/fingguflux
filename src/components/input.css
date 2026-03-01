@@ -1,0 +1,48 @@
+/* Input Component */
+
+.ff-input {
+    width: 100%;
+    padding: var(--ff-space-2) var(--ff-space-4);
+    background-color: var(--ff-surface);
+    border: var(--ff-border-width-1) solid var(--ff-neutral-300);
+    border-radius: var(--ff-radius-md);
+    color: var(--ff-text);
+    font-size: var(--ff-text-sm);
+    /* Motion isolated */
+}
+
+.ff-input::placeholder {
+    color: var(--ff-neutral-400);
+}
+
+.ff-input:focus,
+.ff-input-focused {
+    outline: none;
+    border-color: var(--ff-primary);
+    box-shadow: 0 0 0 var(--ff-ring-width) var(--ff-primary-ring);
+}
+
+.ff-input-error {
+    border-color: var(--ff-danger);
+}
+
+.ff-input-error:focus {
+    border-color: var(--ff-danger);
+    box-shadow: 0 0 0 var(--ff-ring-width) var(--ff-danger-ring);
+}
+
+.ff-input:disabled,
+.ff-input-disabled {
+    background-color: var(--ff-neutral-50);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Label Helper (Utility-based) */
+.ff-label {
+    display: block;
+    font-size: var(--ff-text-xs);
+    font-weight: var(--ff-font-semibold);
+    color: var(--ff-neutral-600);
+    margin-bottom: var(--ff-space-1);
+}

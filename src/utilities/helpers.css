@@ -1,0 +1,90 @@
+/* UI Helpers - Glass, Shadows, Modern Effects */
+
+/* Glassmorphism */
+.ff-glass {
+    background: var(--ff-glass-highlight);
+    backdrop-filter: blur(var(--ff-blur-md));
+    -webkit-backdrop-filter: blur(var(--ff-blur-md));
+    border: var(--ff-border-width-1) solid var(--ff-glass-highlight);
+}
+
+@media (prefers-color-scheme: dark) {
+    .ff-glass {
+        background: var(--ff-glass-dark-overlay);
+        border: var(--ff-border-width-1) solid var(--ff-glass-highlight-subtle);
+    }
+}
+
+/* Shadows */
+.ff-shadow-sm {
+    box-shadow: var(--ff-shadow-sm);
+}
+
+.ff-shadow-md {
+    box-shadow: var(--ff-shadow-md);
+}
+
+.ff-shadow-lg {
+    box-shadow: var(--ff-shadow-lg);
+}
+
+.ff-shadow-xl {
+    box-shadow: var(--ff-shadow-xl);
+}
+
+.ff-transition-slow {
+    transition: all var(--ff-motion-slow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    ::before,
+    ::after {
+        animation-duration: var(--ff-motion-reduction) !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: var(--ff-motion-reduction) !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Visibility & Accessibility Defaults */
+.ff-sr-only {
+    position: absolute;
+    width: var(--ff-border-width-1);
+    height: var(--ff-border-width-1);
+    padding: 0;
+    margin: var(--ff-space-neg-1);
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.ff-focus-ring:focus-visible {
+    outline: var(--ff-border-width-2) solid var(--ff-primary);
+    outline-offset: var(--ff-border-width-2);
+}
+
+/* Interaction Helpers */
+.ff-cursor-pointer {
+    cursor: pointer;
+}
+
+.ff-user-select-none {
+    user-select: none;
+}
+
+/* JS Helper State Hooks */
+[data-ff-scroll-lock="true"] {
+    overflow: hidden;
+    padding-right: var(--ff-scrollbar-width, 0px);
+}
+
+[data-ff-state="closed"] {
+    display: none !important;
+}
+
+[data-ff-state="open"] {
+    display: flex !important;
+}

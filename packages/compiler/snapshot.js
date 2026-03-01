@@ -23,12 +23,15 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // ─── Paths ────────────────────────────────────────────────────────────────────
 
-const CORE_DIR = path.resolve(__dirname, '../core');
-const COMPILER_DIR = path.resolve(__dirname, '../compiler');
-const JS_HELPER_DIR = path.resolve(__dirname, '../js-helper');
-const SNAPSHOT_PATH = path.resolve(CORE_DIR, 'API_SURFACE_SNAPSHOT.json');
-const REGISTRY_PATH = path.resolve(CORE_DIR, 'TOKENS_REGISTRY.json');
-const DEPRECATION_PATH = path.resolve(CORE_DIR, 'DEPRECATION_LOG.json');
+const ROOT_DIR = path.resolve(__dirname, '../../');
+const SRC_DIR = path.resolve(ROOT_DIR, 'src');
+const METADATA_DIR = path.resolve(SRC_DIR, 'metadata');
+const COMPILER_DIR = path.resolve(ROOT_DIR, 'packages/compiler');
+const JS_HELPER_DIR = path.resolve(ROOT_DIR, 'packages/js-helper');
+
+const SNAPSHOT_PATH = path.resolve(METADATA_DIR, 'API_SURFACE_SNAPSHOT.json');
+const REGISTRY_PATH = path.resolve(METADATA_DIR, 'TOKENS_REGISTRY.json');
+const DEPRECATION_PATH = path.resolve(METADATA_DIR, 'DEPRECATION_LOG.json');
 
 // ─── CSS token extractor ──────────────────────────────────────────────────────
 
@@ -57,7 +60,7 @@ export function extractCSSTokens(css) {
  * @returns {string[]}
  */
 export function collectCSSTokens() {
-    const tokensCss = path.join(CORE_DIR, 'tokens.css');
+    const tokensCss = path.join(SRC_DIR, 'tokens', 'tokens.css');
     if (!fs.existsSync(tokensCss)) return [];
     return extractCSSTokens(fs.readFileSync(tokensCss, 'utf8'));
 }
@@ -69,10 +72,10 @@ export function collectCSSTokens() {
  * @returns {string[]} sorted list of component file basenames (e.g. "button.css")
  */
 export function collectComponentFiles() {
-    const compDir = path.join(CORE_DIR, 'components');
+    const compDir = path.join(SRC_DIR, 'components');
     if (!fs.existsSync(compDir)) return [];
     return fs.readdirSync(compDir)
-        .filter(f => f.endsWith('.css'))
+        .filter(f => f.endsWith('.css') && f !== 'index.css')
         .sort();
 }
 
@@ -149,13 +152,12 @@ export function collectCLICommands() {
  * @returns {{ generatedAt: string, version: string, surface: object }}
  */
 export function generateSnapshot() {
-    // Read version from core package.json
-    const corePkg = JSON.parse(fs.readFileSync(path.join(CORE_DIR, 'package.json'), 'utf8'));
+    // Read version from root package.json
+    const rootPkg = JSON.parse(fs.readFileSync(path.join(ROOT_DIR, 'package.json'), 'utf8'));
 
     return {
         $schema: 'https://fingguflux.dev/schemas/api-surface-snapshot.json',
-        generatedAt: new Date().toISOString(),
-        version: corePkg.version,
+        version: rootPkg.version,
         surface: {
             cssTokens: collectCSSTokens(),
             jsExports: collectJSExports(),

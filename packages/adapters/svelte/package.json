@@ -1,6 +1,6 @@
 {
     "name": "@finggujadhav/svelte",
-    "version": "0.9.9",
+    "version": "0.9.16",
     "description": "Svelte adapter for FingguFlux UI library",
     "main": "dist/index.js",
     "module": "src/index.ts",
@@ -19,8 +19,7 @@
         }
     },
     "dependencies": {
-        "@finggujadhav/core": "0.9.9",
-        "@finggujadhav/js-helper": "0.9.9"
+        "@finggujadhav/js-helper": "^0.9.16"
     },
     "peerDependencies": {
         "svelte": ">=3.0.0"

@@ -1,0 +1,38 @@
+/* Badge Component - Modular Architecture */
+
+.ff-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--ff-font-semibold);
+    border-radius: var(--ff-radius-full);
+    white-space: nowrap;
+    line-height: 1;
+}
+
+/* Size Variants - Additive Only */
+.ff-badge-sm {
+    padding: var(--ff-border-width-2) var(--ff-space-1);
+    font-size: var(--ff-font-size-badge);
+}
+
+.ff-badge-md {
+    padding: var(--ff-space-1) var(--ff-space-2);
+    font-size: var(--ff-text-xs);
+}
+
+/* Color Variants - Additive Only */
+.ff-badge-primary {
+    background-color: var(--ff-primary-100);
+    color: var(--ff-primary-700);
+}
+
+.ff-badge-neutral {
+    background-color: var(--ff-neutral-100);
+    color: var(--ff-neutral-700);
+}
+
+.ff-badge-success {
+    background-color: var(--ff-success-surface);
+    color: var(--ff-success-content);
+}

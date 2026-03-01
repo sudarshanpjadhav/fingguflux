@@ -5,12 +5,23 @@
  */
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { scanFiles, getProjectFiles } from './scanner.js';
 import { CompilerEngine } from './engine.js';
 import { runThemeCheck, printThemeCheckReport } from './theme-check.js';
 import {
     generateSnapshot, writeSnapshot, runSnapshotCompare, printSnapshotReport
 } from './snapshot.js';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const frameworkRoot = path.resolve(__dirname, '../../');
+const srcPath = path.resolve(frameworkRoot, 'src');
+
+if (!fs.existsSync(srcPath)) {
+    console.error('❌ FingguFlux installation corrupted. Internal source not found.');
+    console.error(`   Expected path: ${srcPath}`);
+    process.exit(1);
+}
 
 const args = process.argv.slice(2);
 const command = args[0] || 'build';
@@ -32,21 +43,13 @@ async function main() {
         case 'analyze':
             await runAnalyze();
             break;
-        case 'doctor':
-            await runDoctor();
-            break;
-        case 'a11y':
-            await runA11y();
-            break;
-        case 'theme-check':
-            await runThemeCheckCommand();
-            break;
-        case 'snapshot':
-            await runSnapshotCommand();
+        case 'harden':
+            // Harden maps to snapshot comparison in public beta
+            await runSnapshotCommand({ compare: true });
             break;
         default:
             console.error(`Unknown command: ${command}`);
-            console.log('Available commands: build, analyze, doctor, a11y, theme-check, snapshot');
+            console.log('Available commands: build, analyze, harden');
             process.exit(1);
     }
 }
@@ -57,19 +60,13 @@ async function prepareEngine() {
     const engine = new CompilerEngine({ mode });
     engine.setUsedClasses(usedClasses);
 
-    // Collect CSS source files
+    // Collect CSS source files from internal registry
     let combinedCSS = '';
-    const possiblePaths = [
-        path.resolve('./node_modules/@finggujadhav/core'),
-        path.resolve('./packages/core'),
-        path.resolve('../../packages/core')
-    ];
-    let corePath = possiblePaths.find(p => fs.existsSync(p));
-    if (!corePath) throw new Error('Could not find @finggujadhav/core CSS sources.');
+    const corePath = srcPath;
 
     const collectCSS = (dir) => {
         if (!fs.existsSync(dir)) return;
-        const list = fs.readdirSync(dir);
+        const list = fs.readdirSync(dir).sort(); // Deterministic file ordering
         list.forEach(file => {
             const fullPath = path.join(dir, file);
             if (fs.statSync(fullPath).isDirectory()) {
@@ -87,6 +84,10 @@ async function prepareEngine() {
 
 async function runBuild() {
     console.log(`\n🚀 FingguFlux Compiler [Mode: ${mode.toUpperCase()}]`);
+
+    // 1. Token Enforcement Guard
+    validateTokenEnforcement();
+
     const { engine, finalCSS } = await prepareEngine();
 
     if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
@@ -102,6 +103,62 @@ async function runBuild() {
     console.log(`✅ Build Complete!`);
     console.log(`- CSS: ${cssPath} (${Buffer.byteLength(finalCSS)} bytes)`);
     console.log(`- Report: ${reportPath}`);
+}
+
+/**
+ * Validates that no hardcoded values exist in src/components or src/utilities.
+ * Throws error to fail the build if violations are found.
+ */
+function validateTokenEnforcement() {
+    console.log('🔍 Running Token Enforcement Audit...');
+    const forbiddenPatterns = [
+        { regex: /#[0-9a-fA-F]{3,8}/g, name: 'Hex Color' },
+        { regex: /rgba?\((?!var)/g, name: 'Raw RGB/RGBA' },
+        { regex: /\d+(px|rem)(?!\))/g, name: 'Hardcoded Unit' },
+        { regex: /z-index:\s*\d+/g, name: 'Hardcoded Z-Index' }
+    ];
+
+    const searchDirs = [
+        path.join(srcPath, 'components'),
+        path.join(srcPath, 'utilities')
+    ];
+    let violations = [];
+
+    const scan = (dir) => {
+        const absDir = dir;
+        if (!fs.existsSync(absDir)) return;
+
+        const files = fs.readdirSync(absDir);
+        files.forEach(file => {
+            const p = path.join(absDir, file);
+            if (fs.statSync(p).isDirectory()) {
+                scan(p);
+            } else if (file.endsWith('.css')) {
+                const content = fs.readFileSync(p, 'utf8');
+                const lines = content.split('\n');
+                lines.forEach((line, idx) => {
+                    forbiddenPatterns.forEach(pattern => {
+                        const matches = line.match(pattern.regex);
+                        if (matches) {
+                            // Filter out false positives (e.g. inside var statements or comments)
+                            if (line.trim().startsWith('/*') || line.trim().startsWith('*')) return;
+                            violations.push(`[${pattern.name}] ${file}:${idx + 1} -> ${line.trim()}`);
+                        }
+                    });
+                });
+            }
+        });
+    };
+
+    searchDirs.forEach(scan);
+
+    if (violations.length > 0) {
+        console.error('\n❌ TOKEN ENFORCEMENT FAILURE: Hardcoded values detected!');
+        violations.forEach(v => console.error(`   ${v}`));
+        console.error('\nBuild failed. All values must use var(--ff-*) tokens.');
+        process.exit(1);
+    }
+    console.log('✅ Token contract verified. No hardcoded values found.');
 }
 
 async function runAnalyze() {
@@ -130,7 +187,7 @@ async function runAnalyze() {
 async function runDoctor() {
     console.log(`\n🩺 FingguFlux Intelligence - Doctor Mode`);
     const mappingPath = path.resolve(outputDir, 'mapping.json');
-    const corePkgPath = path.resolve('./packages/core/package.json');
+    const corePkgPath = path.resolve(frameworkRoot, 'package.json');
 
     let healthy = true;
 
@@ -195,11 +252,8 @@ async function runA11y() {
 
     // 2. Token Contrast Check
     console.log(`\n🎨 Semantic Token Contrast Check:`);
-    const possibleCorePaths = [
-        path.resolve('./packages/core/tokens.css'),
-        path.resolve('./node_modules/@finggujadhav/core/tokens.css')
-    ];
-    const corePath = possibleCorePaths.find(p => fs.existsSync(p));
+    const coreTokensPath = path.join(srcPath, 'tokens', 'tokens.css');
+    const corePath = fs.existsSync(coreTokensPath) ? coreTokensPath : null;
 
     if (corePath) {
         const tokens = fs.readFileSync(corePath, 'utf8');
@@ -230,16 +284,10 @@ async function runA11y() {
 }
 
 async function runThemeCheckCommand() {
-    // Locate the tokens CSS
-    const possiblePaths = [
-        path.resolve('./packages/core/tokens.css'),
-        path.resolve('./node_modules/@finggujadhav/core/tokens.css'),
-        path.resolve('../../packages/core/tokens.css'),
-    ];
-    const tokensPath = possiblePaths.find(p => fs.existsSync(p));
-    if (!tokensPath) {
-        console.error('❌ tokens.css not found. Searched:');
-        possiblePaths.forEach(p => console.error('   ' + p));
+    const tokensPath = path.join(srcPath, 'tokens', 'tokens.css');
+    if (!fs.existsSync(tokensPath)) {
+        console.error('❌ tokens.css not found internally.');
+        console.error(`   Expected: ${tokensPath}`);
         process.exit(1);
     }
 
@@ -259,16 +307,10 @@ async function runThemeCheckCommand() {
     if (!result.pass) process.exit(1);
 }
 
-async function runSnapshotCommand() {
+async function runSnapshotCommand(override = {}) {
     const doWrite = args.includes('--write');
-    const doCompare = args.includes('--compare');
+    const doCompare = override.compare || args.includes('--compare');
     const verbose = args.includes('--verbose');
-
-    if (!doWrite && !doCompare) {
-        console.error('Usage: finggu snapshot --write   (generate/update baseline)');
-        console.error('       finggu snapshot --compare (CI break-guard diff)');
-        process.exit(1);
-    }
 
     if (doWrite) {
         console.log('\n📸 Generating API surface snapshot…');
@@ -278,7 +320,7 @@ async function runSnapshotCommand() {
         console.log(`  ✅ JS exports    : ${dim.jsExports.length}`);
         console.log(`  ✅ CLI commands  : ${dim.cliCommands.length}`);
         console.log(`  ✅ Component CSS : ${dim.componentFiles.length}`);
-        console.log(`\n✨ Snapshot written → packages/core/API_SURFACE_SNAPSHOT.json  (v${snap.version})\n`);
+        console.log(`\n✨ Snapshot written → src/metadata/API_SURFACE_SNAPSHOT.json  (v${snap.version})\n`);
         return;
     }
 

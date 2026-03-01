@@ -1,0 +1,149 @@
+:root,
+[data-ff-theme="light"] {
+  /* --- Colors --- */
+  --ff-primary-50: #eff6ff;
+  --ff-primary-100: #dbeafe;
+  --ff-primary-200: #bfdbfe;
+  --ff-primary-300: #93c5fd;
+  --ff-primary-400: #60a5fa;
+  --ff-primary-500: #3b82f6;
+  --ff-primary-600: #2563eb;
+  --ff-primary-700: #1d4ed8;
+  --ff-primary-800: #1e40af;
+  --ff-primary-900: #1e3a8a;
+  --ff-primary-ring: rgba(var(--ff-primary-rgb, 59, 130, 246), 0.15);
+  --ff-danger-ring: rgba(239, 68, 68, 0.15);
+
+  --ff-primary: var(--ff-primary-600);
+  --ff-secondary: #64748b;
+  --ff-danger: #ef4444;
+  --ff-success: #22c55e;
+  --ff-warning: #f59e0b;
+  --ff-info: #06b6d4;
+  --ff-color-transparent: transparent;
+
+  /* --- Semantic Surfaces --- */
+  --ff-success-surface: #f0fdf4;
+  --ff-success-border: #bbf7d0;
+  --ff-success-content: #166534;
+
+  --ff-warning-surface: #fffbeb;
+  --ff-warning-border: #fef3c7;
+  --ff-warning-content: #92400e;
+
+  --ff-danger-surface: #fef2f2;
+  --ff-danger-border: #fecaca;
+  --ff-danger-content: #991b1b;
+
+  /* --- Neutral --- */
+  --ff-neutral-0: #ffffff;
+  --ff-neutral-50: #f8fafc;
+  --ff-neutral-100: #f1f5f9;
+  --ff-neutral-200: #e2e8f0;
+  --ff-neutral-300: #cbd5e1;
+  --ff-neutral-400: #94a3b8;
+  --ff-neutral-500: #64748b;
+  --ff-neutral-600: #475569;
+  --ff-neutral-700: #334155;
+  --ff-neutral-800: #1e293b;
+  --ff-neutral-900: #0f172a;
+  --ff-neutral-1000: #000000;
+
+  /* --- Surface/Text Defaults --- */
+  --ff-surface: var(--ff-neutral-0);
+  --ff-text: var(--ff-neutral-900);
+
+  /* --- Spacing --- */
+  --ff-space-0: 0px;
+  --ff-space-1: 0.25rem;
+  --ff-space-2: 0.5rem;
+  --ff-space-3: 0.75rem;
+  --ff-space-4: 1rem;
+  --ff-space-5: 1.25rem;
+  --ff-space-6: 1.5rem;
+  --ff-space-8: 2rem;
+  --ff-space-10: 2.5rem;
+  --ff-space-12: 3rem;
+  --ff-space-16: 4rem;
+  --ff-space-20: 5rem;
+  --ff-space-neg-1: -1px;
+  --ff-space-neg-2: -2px;
+  --ff-width-dropdown: 200px;
+
+  /* --- Radius --- */
+  --ff-radius-none: 0px;
+  --ff-radius-sm: 0.125rem;
+  --ff-radius-md: 0.375rem;
+  --ff-radius-lg: 0.5rem;
+  --ff-radius-xl: 0.75rem;
+  --ff-radius-2xl: 1rem;
+  --ff-radius-full: 9999px;
+
+  /* --- Effects --- */
+  --ff-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --ff-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --ff-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --ff-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --ff-blur-md: 12px;
+  --ff-glass-highlight: rgba(255, 255, 255, 0.1);
+  --ff-glass-highlight-subtle: rgba(255, 255, 255, 0.05);
+  --ff-glass-dark-overlay: rgba(15, 23, 42, 0.3);
+  --ff-glass-border: rgba(255, 255, 255, 0.1);
+  --ff-shadow-none: none;
+
+  /* --- Motion --- */
+  --ff-motion-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --ff-motion-medium: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --ff-motion-reduction: 0.01ms;
+  --ff-motion-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* --- Typography Defaults --- */
+  --ff-font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ff-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --ff-font-size-badge: 0.65rem;
+
+  /* --- Borders & Effects --- */
+  --ff-border-width-1: 1px;
+  --ff-border-width-2: 2px;
+  --ff-ring-width: 3px;
+  --ff-ring-offset: 2px;
+
+  /* --- Z-Index --- */
+  --ff-z-10: 10;
+  --ff-z-20: 20;
+  --ff-z-50: 50;
+  --ff-z-1: 1;
+
+  /* --- Positions --- */
+  --ff-pos-0: 0;
+  --ff-pos-half: 50%;
+
+  /* --- Opacity --- */
+  --ff-opacity-0: 0;
+  --ff-opacity-50: 0.5;
+  --ff-opacity-75: 0.75;
+  --ff-opacity-100: 1;
+}
+
+/* Dark Mode (System Fallback + Explicit Manual) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-ff-theme="light"]) {
+    --ff-surface: var(--ff-neutral-900);
+    --ff-text: var(--ff-neutral-50);
+    --ff-primary: var(--ff-primary-400);
+
+    --ff-neutral-0: #0f172a;
+    --ff-neutral-50: #1e293b;
+    --ff-neutral-900: #f8fafc;
+  }
+}
+
+[data-ff-theme="dark"] {
+  --ff-surface: var(--ff-neutral-900);
+  --ff-text: var(--ff-neutral-50);
+  --ff-primary: var(--ff-primary-400);
+
+  --ff-neutral-0: #0f172a;
+  --ff-neutral-50: #1e293b;
+  --ff-neutral-900: #f8fafc;
+}

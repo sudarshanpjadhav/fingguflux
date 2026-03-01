@@ -1,0 +1,42 @@
+/* Card Component */
+
+.ff-card {
+    background-color: var(--ff-surface);
+    border-radius: var(--ff-radius-xl);
+    border: var(--ff-border-width-1) solid var(--ff-neutral-200);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Variants */
+.ff-card-outline {
+    border: var(--ff-border-width-2) solid var(--ff-neutral-200);
+    box-shadow: var(--ff-shadow-none);
+}
+
+.ff-card-glass {
+    background: var(--ff-glass-highlight);
+    backdrop-filter: blur(var(--ff-blur-md));
+    -webkit-backdrop-filter: blur(var(--ff-blur-md));
+    border: var(--ff-border-width-1) solid var(--ff-glass-border);
+}
+
+/* Sub-components (composed via classes) */
+.ff-card-body {
+    padding: var(--ff-space-5);
+    flex: 1 1 auto;
+}
+
+.ff-card-header {
+    padding: var(--ff-space-4) var(--ff-space-5);
+    border-bottom: var(--ff-border-width-1) solid var(--ff-neutral-200);
+}
+
+.ff-card-footer {
+    padding: var(--ff-space-4) var(--ff-space-5);
+    border-top: var(--ff-border-width-1) solid var(--ff-neutral-200);
+    background-color: var(--ff-neutral-50);
+}
+
+/* Shadows are composed via ff-shadow-* classes */

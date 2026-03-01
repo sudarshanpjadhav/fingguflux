@@ -1,13 +1,49 @@
 {
   "name": "fingguflux",
-  "version": "0.9.9",
-  "private": true,
-  "description": "High-performance, headless UI engine.",
+  "version": "1.0.0-beta.1",
+  "private": false,
+  "description": "The deterministic CSS framework for production-grade UI contracts.",
   "type": "module",
+  "main": "./dist/index.css",
+  "bin": {
+    "finggu": "./packages/compiler/cli.js"
+  },
+  "exports": {
+    ".": "./dist/index.css",
+    "./src/*": "./src/*.css"
+  },
+  "files": [
+    "dist",
+    "src",
+    "packages/compiler/cli.js",
+    "packages/compiler/engine.js",
+    "packages/compiler/scanner.js",
+    "packages/compiler/snapshot.js",
+    "packages/compiler/theme-check.js",
+    "packages/compiler/a11y.js",
+    "packages/compiler/index.js",
+    "packages/compiler/package.json",
+    "packages/js-helper/src",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
   "scripts": {
-    "build": "node ./packages/compiler/cli.js",
-    "build:opt": "node ./packages/compiler/cli.js opt",
-    "build:ext": "node ./packages/compiler/cli.js ext"
+    "build": "postcss src/index.css -o dist/index.css",
+    "watch": "postcss src/index.css -o dist/index.css --watch",
+    "compile": "node ./packages/compiler/cli.js",
+    "compile:opt": "node ./packages/compiler/cli.js opt",
+    "compile:ext": "node ./packages/compiler/cli.js ext",
+    "version:major": "npm version major",
+    "version:minor": "npm version minor",
+    "version:patch": "npm version patch"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.27",
+    "cssnano": "^6.1.2",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "postcss-import": "^16.1.1"
   },
   "workspaces": [
     "packages/*",

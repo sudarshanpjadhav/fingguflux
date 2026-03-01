@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@finggujadhav/react';
-import '@finggujadhav/core/index.css';
+import '../../../../dist/index.css';
 
 /**
  * Premium documentation layout using FingguFlux internal components.

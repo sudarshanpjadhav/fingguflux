@@ -23,9 +23,11 @@ Designed for long-lived production systems, design systems, and enterprise-scale
 
 ## 🔥 The CSS Drift Problem
 
-### 🎥 10-Second Demo — Silent Drift vs. Contract Enforcement
-![CSS Drift Demo](docs/assets/css-drift-demo.gif)
-Traditional CSS frameworks allow **silent style drift**. When a design token is renamed or removed, production styles break without any CLI warnings or build failures.
+### 🎥 Live Comparison — Silent Drift vs. Contract Enforcement
+
+![CSS Drift Comparison](docs/assets/css-drift-comparison.png)
+
+Traditional CSS frameworks allow **silent style drift**. When a design token is renamed or removed, production styles break without any CLI warnings or build failures. FingguFlux transforms CSS from a "trust-based" system into a **"contract-based"** one.
 
 | Feature | Traditional CSS | FingguFlux |
 | :--- | :--- | :--- |
@@ -140,9 +142,42 @@ Explore the interactive **CSS Drift Demo** to see FingguFlux in action:
    npx finggu theme-check
    ```
 
-## 🛠 Project Structure
+## 🏗️ Production-Grade Architecture
 
-- `packages/core`: Standardized tokens, CSS reset, and fundamental components.
+FingguFlux is structured as a modular CSS framework designed for high performance and scalability.
+
+### Folder Structure
+- `src/`: Source files organized by responsibility.
+  - `base/`: Foundation styles (reset, typography, layout).
+  - `tokens/`: Design tokens (CSS variables).
+  - `components/`: Modular CSS components.
+  - `utilities/`: Tree-shakable utility classes.
+- `dist/`: Compiled and minified production artifacts.
+- `docs/`: Framework documentation and API surfaces.
+- `examples/`: Guided implementation examples.
+- `scripts/`: Build and development automation.
+
+### Build Pipeline
+We use **PostCSS** with **Autoprefixer** and **cssnano** to ensure cross-browser compatibility and minimum file size.
+
+```bash
+# Build production CSS
+npm run build
+
+# Development mode (watch)
+npm run watch
+```
+
+### Tree-Shakable Utility System
+The framework's `src/index.css` is an aggregation of modular imports. For custom builds, you can import individual modules from `src/` to your own PostCSS pipeline to eliminate unused CSS automatically.
+
+### CLI Support
+The framework is CLI-ready. Use `npm run compile` to trigger the FingguFlux compiler with advanced tree-shaking and deterministic hashing (Extreme Mode).
+
+## 🧱 Project Structure
+
+- `src/`: Unified source of truth for tokens, CSS foundation, and modular components.
+- `dist/`: Built production artifacts.
 - `packages/compiler`: The build-time engine for tree-shaking and hashing.
 - `packages/adapters`: Framework integrations (React, Vue, Svelte).
 - `packages/js-helper`: Shared runtime logic for themes and motion.

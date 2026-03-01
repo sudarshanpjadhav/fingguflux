@@ -1,0 +1,16 @@
+/* FingguFlux Core - Production Entry Point */
+
+/* 1. Design Tokens (The DNA) */
+@import "./tokens/tokens.css";
+
+/* 2. Base & Foundation */
+@import "./base/reset.css";
+@import "./base/typography.css";
+@import "./base/layout.css";
+
+/* 3. Modular Components */
+@import "./components/index.css";
+
+/* 4. Utilities (Atomic Classes) */
+@import "./utilities/utilities.css";
+@import "./utilities/helpers.css";
