@@ -1,0 +1,39 @@
+<!-- FingguFlux Benchmark: Bootstrap Implementation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom p-3">
+    <a class="navbar-brand fw-bold" href="#">Finggu</a>
+    <div class="navbar-nav me-auto mb-2 mb-lg-0 flex-row gap-3">
+        <a class="nav-link text-muted" href="#">Dashboard</a>
+        <a class="nav-link text-muted" href="#">Projects</a>
+        <a class="nav-link text-muted" href="#">Settings</a>
+    </div>
+    <button class="btn btn-primary">New Project</button>
+</nav>
+
+<div class="container-fluid p-4">
+    <div class="row g-4">
+        <div class="col-12 col-md-4">
+            <div class="card p-3 shadow-sm border border-secondary-subtle">
+                <h3 class="card-title h5">Active Servers</h3>
+                <p class="card-text text-muted small">12 healthy, 0 failing</p>
+                <span class="badge rounded-pill bg-success-subtle text-success w-25 mb-3">Running</span>
+                <button class="btn btn-outline-secondary w-100">Manage</button>
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="card p-3 shadow-sm border border-secondary-subtle">
+                <h3 class="card-title h5">Database Load</h3>
+                <p class="card-text text-muted small">Current CPU: 42%</p>
+                <span class="badge rounded-pill bg-warning-subtle text-warning w-25 mb-3">Normal</span>
+                <button class="btn btn-outline-secondary w-100">Logs</button>
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="card p-3 shadow-sm border border-secondary-subtle">
+                <h3 class="card-title h5">Resource Alerts</h3>
+                <p class="card-text text-muted small">2 critical alerts</p>
+                <span class="badge rounded-pill bg-danger-subtle text-danger w-25 mb-3">Critical</span>
+                <button class="btn btn-danger w-100">Silence</button>
+            </div>
+        </div>
+    </div>
+</div>

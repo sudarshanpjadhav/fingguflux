@@ -1,192 +1,123 @@
 # FingguFlux
+**Build Interfaces That Flow.**
 
-### The Transparent UI Hardening Engine
+![Version](https://img.shields.io/badge/version-1.0.0--beta.1-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Tests](https://img.shields.io/badge/tests-65_passing-brightgreen)
+![Frameworks](https://img.shields.io/badge/frameworks-React_|_Vue_|_Svelte-blueviolet)
 
-FingguFlux is a zero-runtime CSS hardening engine that prevents silent UI breakage in production.
+## What is CSS Drift?
+**CSS Drift** occurs when design tokens or class names are renamed, removed, or changed without updating the components that rely on them. Over time, this leads to silent UI breakage—components shipping with missing styles, invisible buttons, and inconsistent layouts without throwing a single build error.
 
-Most CSS frameworks fail silently.
-FingguFlux fails loudly — before your users ever see the bug.
-Designed for long-lived production systems, design systems, and enterprise-scale frontends.
+## What is FingguFlux?
+FingguFlux is a **zero-runtime CSS hardening engine** designed to solve CSS Drift. Rather than relying on trust to keep styles aligned, FingguFlux strictly enforces a contract system at build time. It validates tokens, extracts and hashes used classes, and loudly fails CI/CD pipelines before broken code reaches production. 
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![npm version](https://img.shields.io/npm/v/@finggujadhav/core)](https://www.npmjs.com/package/@finggujadhav/core)
+FingguFlux operates in 3 distinct modes depending on your environment needs:
+- **Dev Mode:** Pass-through readability for rapid prototyping.
+- **Optimized Mode:** Strips prefixes and tree-shakes unused styles for production.
+- **Extreme Hash Mode:** Deterministic selector obfuscation for maximum security and minimal shipping size.
 
----
+## Key Features
+- **Token Contract System**: Enforces 121 formally tracked tokens.
+- **Deterministic Compiler**: Provides block-level tree-shaking and selector hashing.
+- **Multi-Framework Adapters**: Headless component wrappers for React, Vue, and Svelte.
+- **7 CLI Commands**: Comprehensive tooling for analysis, snapshots, and CI enforcing.
+- **Ultra-Lightweight**: Yields highly optimized output that scales up to 99.3% smaller than Bootstrap.
+- **Accessibility by Default**: Built-in AST and logic scanners for `aria-*` tags and proper WCAG compliance.
+- **Zero Runtime Style Injection**: CSS is static; Javascript only manages specific interaction states (e.g. traps, themes).
 
-## 🚀 Why FingguFlux?
+## Quick Start (Local Beta)
+> **Note:** The `v1.0.0-beta.1` packages are not yet formally published. **npm publish coming with v1.0 stable!** Until then, clone the repository to use FingguFlux locally in your project.
 
-- **Zero-Runtime Overhead**: No CSS-in-JS injection. Pure, static CSS.
-- **Extreme Hardening**: Deterministic hashing of selectors (e.g., `.ff-btn` → `.ff-a1`) for security and minification.
-- **Architectural Parity**: Identical behavior and hardening across **React**, **Vue**, and **Svelte**.
-- **Token Isolation**: Nested themes ("Token Tunnels") that prevent style bleeding.
-- **Motion Orchestration**: Performance-optimized, accessible motion tokens.
-
-## 🔥 The CSS Drift Problem
-
-### 🎥 Live Comparison — Silent Drift vs. Contract Enforcement
-
-![CSS Drift Comparison](docs/assets/css-drift-comparison.png)
-
-Traditional CSS frameworks allow **silent style drift**. When a design token is renamed or removed, production styles break without any CLI warnings or build failures. FingguFlux transforms CSS from a "trust-based" system into a **"contract-based"** one.
-
-| Feature | Traditional CSS | FingguFlux |
-| :--- | :--- | :--- |
-| **Token Renaming** | Silent UI breakage | **CLI Error (Contract Violation)** |
-| **Impact Detection** | Manual QA | **Automated Snapshots** |
-| **Theme Integrity** | Hard to maintain | **Verified by Design Contract** |
-
-## 🏢 Why This Matters at Scale
-
-CSS Drift becomes dangerous when:
-
-- Large teams modify tokens weekly
-- Multiple themes exist (light/dark/system)
-- Design systems live for years
-- Component libraries are shared across apps
-
-Without enforcement → silent breakage.
-With FingguFlux → build-time contract validation.
-
-### Real CLI Detection Output
-
-When a token is removed or renamed, FingguFlux does not fail silently.
-
-Instead, the build stops immediately and reports the violation:
-
-![CSS Drift Detection CLI](docs/assets/css-drift-cli.png)
-
-> Most CSS frameworks fail silently. FingguFlux fails loudly — before production.
-
-
-> [!IMPORTANT]
-> FingguFlux enforces a "Design Contract". If a component expects a token that no longer exists in your theme, the build **fails** immediately, preventing broken UI from reaching your users.
-
-### 🔴 Silent Breakage Example
-In traditional CSS, renaming `--primary-color` to `--brand-color` leaves your buttons invisible or unstyled because the CSS class still points to the old variable.
-
-### 🟢 Contract Enforcement
-With FingguFlux, running `finggu snapshot --compare` detects that `ff-btn-primary` is referencing a missing token and blocks the deployment.
-
----
-
-## 🧱 Core Philosophy
-
-FingguFlux enforces three hard rules:
-
-1. Tokens are contracts.
-2. State is attribute-driven.
-3. CSS must be deterministic.
-
-No silent overrides.
-No implicit dependencies.
-No runtime patching.
-
-
-## ❌ When Not To Use FingguFlux
-
-FingguFlux may not be necessary if:
-
-- You are building a small static website.
-- You do not use design tokens.
-- You do not require strict contract enforcement.
-
-FingguFlux is built for long-lived, production-grade systems.
-
-
-
-## 📦 Quick Start (2 Minutes)
-
-### 1. Install
+### 1. Clone the Repo Locally
 ```bash
-npm install @finggujadhav/core @finggujadhav/react
+git clone https://github.com/fingguflux/fingguflux.git
+cd fingguflux
+npm install
+npm run build
 ```
 
-### 2. Configure Compiler (Vite)
+### 2. Vite Config Setup
+Install the raw paths mapped in your workspace. Example Vite mapping:
 ```typescript
-import { fingguCompiler } from '@finggu/compiler';
+import { defineConfig } from 'vite';
+import { fingguCompiler } from '../fingguflux/packages/compiler/index.js';
 
-export default {
-  plugins: [fingguCompiler({ mode: 'opt' })]
-}
+export default defineConfig({
+  plugins: [fingguCompiler({ mode: 'dev' })]
+});
 ```
 
-### 3. Usage
+### 3. Usage Example (React)
 ```tsx
-import { Button, FingguProvider } from '@finggu/react';
-import mapping from './finggu-mapping.json';
+import { FingguProvider, Button } from '@finggujadhav/react';
+import '@finggujadhav/core/dist/index.css';
 
 export default function App() {
   return (
-    <FingguProvider mapping={mapping} mode="opt">
-      <Button variant="primary" motion="pop">Hardened UI</Button>
+    <FingguProvider mode="dev" theme="system">
+      <Button variant="primary" size="md">Flow Interface</Button>
     </FingguProvider>
   );
 }
 ```
+*Links to [Vue Minimal](../examples/vue-minimal) and [Svelte Minimal](../examples/svelte-minimal) examples.*
 
-## 🕹️ Try it Locally
+## The 3 Modes
 
-Explore the interactive **CSS Drift Demo** to see FingguFlux in action:
+| Mode | Process Behavior | Selector Output Example | Best For |
+|:---|:---|:---|:---|
+| `dev` | Identity proxy, ignores tree-shaking | `.ff-btn-primary` | Fast local development, inspection |
+| `opt` | Strips `ff-` prefix, trims unused | `.btn-primary` | Standard production apps |
+| `ext` | FNV-1a Hash map, extreme pruning | `.ff-a1b2c3` | Enterprise, minified outputs |
 
-1. Open `docs/css-drift-demo.html` in your browser.
-2. Click **"REDUCE TO CHAOS"** to witness silent breakage vs. contract enforcement.
-3. Run the following commands in your terminal to see the CLI in action (requires local build):
-   ```bash
-   # Create a baseline of your current design tokens
-   npx finggu snapshot
+## 7. CLI Commands
+FingguFlux includes a robust CLI for enforcing your design contracts during development and CI automation:
+- `init` - Scaffolds a new FingguFlux configuration in your project.
+- `build` - Executes the compiler loop: extracts, maps, and writes CSS files.
+- `dev` - Alias/Watch mode for live UI mapping validation and hot module replacement.
+- `analyze` - Profiles compilation times, cache hit ratios, and class frequency.
+- `add` - Interactively installs individual headless components to your workspace.
+- `theme-check` - Confirms 100% token usage alignment against the `TOKENS_REGISTRY`. 
+- `snapshot` - Guards against implicit breaking changes, preventing drift.
+- `a11y` - Scans `.jsx`, `.svelte`, `.vue`, and `.html` for missing ARIA properties.
+- `doctor` - Interactive mode verifying structural integrity and AST parser compatibility.
 
-   # Compare changes and detect drift
-   npx finggu snapshot --compare
 
-   # Audit your theme for unused or missing tokens
-   npx finggu theme-check
-   ```
+## Project Structure
+- `src/` - Pure CSS architecture and source-of-truth metadata registries.
+- `packages/compiler/` - Build-time AST scanner, hasher, and intelligence engine.
+- `packages/js-helper/` - Framework-agnostic runtime for focus mapping and themes.
+- `packages/adapters/react/` - Hardened React components utilizing Provider maps.
+- `packages/adapters/vue/` - Hardened Vue components utilizing Plugins/Composables.
+- `packages/adapters/svelte/` - Hardened Svelte components leveraging Context definitions.
+- `dist/` - PostCSS-generated raw output before compiler interception.
 
-## 🏗️ Production-Grade Architecture
+## Framework Support Table
 
-FingguFlux is structured as a modular CSS framework designed for high performance and scalability.
+| Framework | Status |
+|:---|:---|
+| React | ✅ Stable |
+| Vue | ✅ Stable |
+| Svelte | ✅ Stable (requires Svelte 5) |
+| Web Components | 🔄 Coming in v1.1 |
 
-### Folder Structure
-- `src/`: Source files organized by responsibility.
-  - `base/`: Foundation styles (reset, typography, layout).
-  - `tokens/`: Design tokens (CSS variables).
-  - `components/`: Modular CSS components.
-  - `utilities/`: Tree-shakable utility classes.
-- `dist/`: Compiled and minified production artifacts.
-- `docs/`: Framework documentation and API surfaces.
-- `examples/`: Guided implementation examples.
-- `scripts/`: Build and development automation.
+## Documentation Links
+- [Roadmap (ROADMAP.md)](ROADMAP.md)
+- [Contributing (CONTRIBUTING.md)](CONTRIBUTING.md)
+- [Changelog (CHANGELOG.md)](CHANGELOG.md)
+- [Governance Policy (GOVERNANCE.md)](GOVERNANCE.md)
+- [Versioning Guidelines (VERSION_POLICY.md)](VERSION_POLICY.md)
 
-### Build Pipeline
-We use **PostCSS** with **Autoprefixer** and **cssnano** to ensure cross-browser compatibility and minimum file size.
+## Performance
+FingguFlux achieves remarkable size savings by strictly hashing and omitting un-invoked keys:
 
-```bash
-# Build production CSS
-npm run build
-
-# Development mode (watch)
-npm run watch
-```
-
-### Tree-Shakable Utility System
-The framework's `src/index.css` is an aggregation of modular imports. For custom builds, you can import individual modules from `src/` to your own PostCSS pipeline to eliminate unused CSS automatically.
-
-### CLI Support
-The framework is CLI-ready. Use `npm run compile` to trigger the FingguFlux compiler with advanced tree-shaking and deterministic hashing (Extreme Mode).
-
-## 🧱 Project Structure
-
-- `src/`: Unified source of truth for tokens, CSS foundation, and modular components.
-- `dist/`: Built production artifacts.
-- `packages/compiler`: The build-time engine for tree-shaking and hashing.
-- `packages/adapters`: Framework integrations (React, Vue, Svelte).
-- `packages/js-helper`: Shared runtime logic for themes and motion.
-
-## ⚖️ License
-
-Distributed under the MIT License. See `LICENSE` for more information.
+| Framework Strategy | Raw Size | Gzip Size | Savings vs BS |
+|:---|:---|:---|:---|
+| **FingguFlux (Opt)** | 1.54 KB | 0.54 KB | 99.3% |
+| **Tailwind CSS** | 7.70 KB | 2.20 KB | 96.7% |
+| **Bootstrap (Full)** | 232.11 KB | 30.82 KB | 0.0% |
 
 ---
-
-If FingguFlux helps you ship safer UI, consider ⭐ starring the repository to support the project.
-Built with 🧠 by the Finggu Infotech Team.
+*MIT License. See [Contributing Guide](CONTRIBUTING.md).*  
+*Built by the **Finggu Infotech Team***

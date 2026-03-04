@@ -1,0 +1,34 @@
+<!-- FingguFlux Benchmark: Tailwind Implementation -->
+<nav class="flex items-center justify-between p-4 bg-white border-b border-gray-200">
+    <div class="text-xl font-bold">Finggu</div>
+    <div class="flex space-x-4">
+        <a href="#" class="text-gray-500 hover:text-blue-600">Dashboard</a>
+        <a href="#" class="text-gray-500 hover:text-blue-600">Projects</a>
+        <a href="#" class="text-gray-500 hover:text-blue-600">Settings</a>
+    </div>
+    <button class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700">New Project</button>
+</nav>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-8">
+    <div class="p-6 border border-gray-200 rounded-lg shadow-sm">
+        <h3 class="text-lg font-semibold mb-2">Active Servers</h3>
+        <p class="text-sm text-gray-500 mb-4">12 healthy, 0 failing</p>
+        <span
+            class="inline-block px-2 py-1 text-xs font-medium text-green-700 bg-green-100 rounded-full mb-4">Running</span>
+        <button class="w-full px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50">Manage</button>
+    </div>
+    <div class="p-6 border border-gray-200 rounded-lg shadow-sm">
+        <h3 class="text-lg font-semibold mb-2">Database Load</h3>
+        <p class="text-sm text-gray-500 mb-4">Current CPU: 42%</p>
+        <span
+            class="inline-block px-2 py-1 text-xs font-medium text-yellow-700 bg-yellow-100 rounded-full mb-4">Normal</span>
+        <button class="w-full px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50">Logs</button>
+    </div>
+    <div class="p-6 border border-gray-200 rounded-lg shadow-sm">
+        <h3 class="text-lg font-semibold mb-2">Resource Alerts</h3>
+        <p class="text-sm text-gray-500 mb-4">2 critical alerts</p>
+        <span
+            class="inline-block px-2 py-1 text-xs font-medium text-red-700 bg-red-100 rounded-full mb-4">Critical</span>
+        <button class="w-full px-4 py-2 text-white bg-red-600 rounded-md hover:bg-red-700">Silence</button>
+    </div>
+</div>

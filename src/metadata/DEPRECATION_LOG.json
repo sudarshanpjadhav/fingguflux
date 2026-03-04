@@ -1,6 +1,6 @@
 {
     "$schema": "https://fingguflux.dev/schemas/deprecation-log.json",
     "_comment": "Formal deprecation registry for FingguFlux public APIs. Every entry MUST include a 'since' version (when deprecated), an 'until' version (last version it will appear in), a 'type', and either a 'replacement' or null. The 'finggu snapshot' CI command enforces overdue deprecations as breaking-change failures.",
-    "version": "0.9.6",
+    "version": "1.0.0-beta.1",
     "deprecations": []
 }

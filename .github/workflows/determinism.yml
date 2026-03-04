@@ -1,0 +1,61 @@
+name: CI Determinism Enforcement
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  verify-determinism:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18, 20]
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Build (First Pass)
+        run: npm run build
+
+      - name: Compute Baseline Hash
+        id: hash1
+        run: |
+          HASH=$(find dist -type f -exec sha256sum {} + | sort | sha256sum | awk '{print $1}')
+          echo "HASH_1=$HASH" >> $GITHUB_ENV
+          echo "First Pass Combined Hash: $HASH"
+
+      - name: Clear Distribution
+        run: rm -rf dist
+
+      - name: Run Build (Second Pass)
+        run: npm run build
+
+      - name: Compute Verification Hash
+        id: hash2
+        run: |
+          HASH=$(find dist -type f -exec sha256sum {} + | sort | sha256sum | awk '{print $1}')
+          echo "HASH_2=$HASH" >> $GITHUB_ENV
+          echo "Second Pass Combined Hash: $HASH"
+
+      - name: Compare Deterministic Output
+        run: |
+          if [ "$HASH_1" != "$HASH_2" ]; then
+            echo "::error::Non-deterministic build detected across artifacts."
+            echo "Expected Baseline: $HASH_1"
+            echo "Received Verification: $HASH_2"
+            exit 1
+          else
+            echo "Full artifact determinism verified: $HASH_1"
+          fi

@@ -1,0 +1,40 @@
+<!-- 
+  FingguFlux Benchmark: Standard UI Contract
+  Target: Responsive SaaS Dashboard Fragment
+  Requirements: 
+  - Nav: logo, 3 links, 1 action button
+  - Grid: 3-column layout (responsive)
+  - Cards: 3 x (heading, text, status badge, action button)
+  - Spacing: Standard 16px/24px gaps
+-->
+
+<nav id="nav">
+    <div class="logo">Finggu</div>
+    <div class="links">
+        <a href="#">Dashboard</a>
+        <a href="#">Projects</a>
+        <a href="#">Settings</a>
+    </div>
+    <button class="btn btn-primary">New Project</button>
+</nav>
+
+<div class="grid">
+    <div class="card">
+        <h3>Active Servers</h3>
+        <p>12 healthy, 0 failing</p>
+        <span class="status healthy">Running</span>
+        <button class="btn btn-secondary">Manage</button>
+    </div>
+    <div class="card">
+        <h3>Database Load</h3>
+        <p>Current CPU: 42%</p>
+        <span class="status warning">Normal</span>
+        <button class="btn btn-secondary">Logs</button>
+    </div>
+    <div class="card">
+        <h3>Resource Alerts</h3>
+        <p>2 critical alerts</p>
+        <span class="status danger">Critical</span>
+        <button class="btn btn-danger">Silence</button>
+    </div>
+</div>

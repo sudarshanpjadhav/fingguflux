@@ -1,0 +1,34 @@
+[
+  {
+    "name": "FingguFlux (Opt)",
+    "rawSize": 1537,
+    "gzipSize": 543,
+    "reduction": 0,
+    "percentageOfBootstrap": "0.7%",
+    "savings": "99.3%"
+  },
+  {
+    "name": "Tailwind CSS",
+    "rawSize": 7697,
+    "gzipSize": 2197,
+    "reduction": 0,
+    "percentageOfBootstrap": "3.3%",
+    "savings": "96.7%"
+  },
+  {
+    "name": "Bootstrap (Full)",
+    "rawSize": 232111,
+    "gzipSize": 30823,
+    "reduction": 0,
+    "percentageOfBootstrap": "100.0%",
+    "savings": "0.0%"
+  },
+  {
+    "name": "Vanilla Handcrafted",
+    "rawSize": 1717,
+    "gzipSize": 634,
+    "reduction": 0,
+    "percentageOfBootstrap": "0.7%",
+    "savings": "99.3%"
+  }
+]

@@ -1,6 +1,6 @@
 {
     "$schema": "https://fingguflux.dev/schemas/tokens-registry.json",
-    "version": "0.9.6",
+    "version": "1.0.0-beta.1",
     "frozen": true,
     "_comment": "THIS FILE IS THE AUTHORITATIVE TOKEN CONTRACT. Do not remove or rename tokens without a deprecation cycle. Run 'finggu theme-check' to validate.",
     "categories": {
@@ -133,11 +133,42 @@
             ]
         },
         "typography": {
-            "description": "Font-family stacks.",
+            "description": "Font-family stacks, sizes, weights, and leading.",
             "tokens": [
                 "--ff-font-sans",
                 "--ff-font-mono",
-                "--ff-font-size-badge"
+                "--ff-font-size-badge",
+                "--ff-text-xs",
+                "--ff-text-sm",
+                "--ff-text-base",
+                "--ff-text-lg",
+                "--ff-text-xl",
+                "--ff-text-2xl",
+                "--ff-text-3xl",
+                "--ff-text-4xl",
+                "--ff-text-5xl",
+                "--ff-font-thin",
+                "--ff-font-extralight",
+                "--ff-font-light",
+                "--ff-font-normal",
+                "--ff-font-medium",
+                "--ff-font-semibold",
+                "--ff-font-bold",
+                "--ff-font-extrabold",
+                "--ff-font-black",
+                "--ff-leading-tight",
+                "--ff-leading-normal",
+                "--ff-leading-loose"
+            ]
+        },
+        "layout": {
+            "description": "Container max-widths and layout boundaries.",
+            "tokens": [
+                "--ff-container-sm",
+                "--ff-container-md",
+                "--ff-container-lg",
+                "--ff-container-xl",
+                "--ff-container-2xl"
             ]
         },
         "border": {

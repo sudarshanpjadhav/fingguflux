@@ -1,6 +1,6 @@
 /**
  * FingguFlux API Surface Snapshot Engine
- * v0.9.7-RC – Release Candidate Preparation
+ * v1.0.0-beta.1
  *
  * Generates an authoritative, machine-readable snapshot of the ENTIRE
  * public API surface and diffs it against a stored baseline to detect:

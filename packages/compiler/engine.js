@@ -157,7 +157,7 @@ export class CompilerEngine {
 
     generateReport() {
         return {
-            engineVersion: "0.9.7",
+            engineVersion: "1.0.0-beta.1",
             mode: this.mode,
             stats: this.getStats(),
             mapping: this.getMapping()

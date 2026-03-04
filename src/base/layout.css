@@ -1,12 +1,6 @@
 /* Layout Engine - Grid, Flex, Container Queries */
 
-:root {
-    --ff-container-sm: 640px;
-    --ff-container-md: 768px;
-    --ff-container-lg: 1024px;
-    --ff-container-xl: 1280px;
-    --ff-container-2xl: 1440px;
-}
+
 
 /* Container Queries Registration */
 .ff-container-inline {

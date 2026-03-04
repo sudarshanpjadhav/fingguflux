@@ -1,8 +1,8 @@
 # FingguFlux Versioning Policy
 
-> **Document version:** 0.9.6  
+> **Document version:** 1.0.0-beta.1  
 > **Status:** Adopted  
-> **Effective from:** v0.9.7-RC  
+> **Effective from:** v1.0.0-beta.1  
 > **Owner:** Finggu Architecture Team
 
 ---

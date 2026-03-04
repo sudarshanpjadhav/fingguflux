@@ -1,13 +1,14 @@
 # FingguFlux Roadmap
 
-The following roadmap outlines the evolution of FingguFlux from its current Public Beta (v0.9.0) towards a v1.0 stable release and beyond.
+The following roadmap outlines the evolution of FingguFlux from its current Public Beta (v1.0.0-beta.1) towards a v1.0 stable release and beyond.
 
-## 🟢 Phase 1: Public Beta (Current)
+## 🟢 Phase 1: Public Beta (v1.0.0-beta.1 — Current)
 *Focus: Stability and Parity*
 - [x] Hardened React, Vue, Svelte adapters.
 - [x] Deterministic hashing engine (Extreme Mode).
 - [x] Scoped theme isolation.
 - [x] Centralized token registry.
+- [x] CLI commands: build, analyze, doctor, a11y, theme-check, snapshot, harden.
 
 ## 🟡 Phase 2: Tooling & Integrations (Q2 2026)
 *Focus: DX and Ecosystem*

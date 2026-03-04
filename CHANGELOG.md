@@ -2,6 +2,16 @@
 
 All notable changes to FingguFlux will be documented in this file.
  
+## [1.0.0-beta.1] - 2026-03-04
+*Stabilization Phase for Public Readiness*
+
+### Fixed & Improved
+- **CLI Robustness**: Fully wired all 7 CLI commands (`build`, `analyze`, `doctor`, `a11y`, `theme-check`, `snapshot`, `harden`) into the execution router.
+- **Contract Enforcement**: Registered 26 previously orphaned layout and typography tokens, reaching a milestone of 121 unified, contract-enforced CSS tokens.
+- **Version Identity**: Aligned all sub-packages, documentation, and internal telemetry to a single source of truth (`v1.0.0-beta.1`).
+- **Adapter Reliability**: Updated `@finggujadhav/svelte` peer dependency to accurately reflect the strict `svelte@>=5.0.0` AST requirement.
+- **Architecture**: Scaffolded Web Components adapter stub indicating formal `v1.1` roadmap inclusion.
+
 ## [0.9.8] - 2026-02-27
 ### Added
 - **Compiler Intelligence**:

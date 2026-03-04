@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * FingguFlux CLI
- * v0.9.7-RC Release Candidate Preparation
+ * v1.0.0-beta.1
  */
 import fs from 'fs';
 import path from 'path';
@@ -43,13 +43,25 @@ async function main() {
         case 'analyze':
             await runAnalyze();
             break;
+        case 'doctor':
+            await runDoctor();
+            break;
+        case 'a11y':
+            await runA11y();
+            break;
+        case 'theme-check':
+            await runThemeCheckCommand();
+            break;
+        case 'snapshot':
+            await runSnapshotCommand();
+            break;
         case 'harden':
             // Harden maps to snapshot comparison in public beta
             await runSnapshotCommand({ compare: true });
             break;
         default:
             console.error(`Unknown command: ${command}`);
-            console.log('Available commands: build, analyze, harden');
+            console.log('Available commands: build, analyze, doctor, a11y, theme-check, snapshot, harden');
             process.exit(1);
     }
 }

@@ -1,33 +1,6 @@
 /* Fluid Typography System */
 
-:root {
-    /* Font Sizes - Clamp based scaling (Min: 320px, Max: 1280px) */
-    --ff-text-xs: clamp(0.75rem, 0.7304rem + 0.0978vw, 0.8125rem);
-    --ff-text-sm: clamp(0.875rem, 0.8554rem + 0.0978vw, 0.9375rem);
-    --ff-text-base: clamp(1rem, 0.9609rem + 0.1957vw, 1.125rem);
-    --ff-text-lg: clamp(1.125rem, 1.0663rem + 0.2935vw, 1.3125rem);
-    --ff-text-xl: clamp(1.25rem, 1.1522rem + 0.4891vw, 1.5625rem);
-    --ff-text-2xl: clamp(1.5rem, 1.3435rem + 0.7826vw, 2rem);
-    --ff-text-3xl: clamp(1.875rem, 1.6207rem + 1.2717vw, 2.6875rem);
-    --ff-text-4xl: clamp(2.25rem, 1.8587rem + 1.9565vw, 3.5rem);
-    --ff-text-5xl: clamp(3rem, 2.3739rem + 3.1304vw, 5rem);
 
-    /* Font Weights */
-    --ff-font-thin: 100;
-    --ff-font-extralight: 200;
-    --ff-font-light: 300;
-    --ff-font-normal: 400;
-    --ff-font-medium: 500;
-    --ff-font-semibold: 600;
-    --ff-font-bold: 700;
-    --ff-font-extrabold: 800;
-    --ff-font-black: 900;
-
-    /* Line Heights */
-    --ff-leading-tight: 1.25;
-    --ff-leading-normal: 1.5;
-    --ff-leading-loose: 1.75;
-}
 
 /* Base Typography Classes */
 .ff-text-xs {
