@@ -18,5 +18,4 @@ if (typeof document !== 'undefined') {
     initEvents();
     initTabs();
     initDropdowns();
-    console.log('FingguFlux JS Helpers initialized.');
 }

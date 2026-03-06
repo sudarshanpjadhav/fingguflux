@@ -1,9 +1,9 @@
 # FingguFlux Roadmap
 
-The following roadmap outlines the evolution of FingguFlux from its current Public Beta (v1.0.0-beta.1) towards a v1.0 stable release and beyond.
+The following roadmap outlines the evolution of FingguFlux from its current Public Beta (v1.0.0-beta.2) towards a v1.0 stable release and beyond.
 
-## 🟢 Phase 1: Public Beta (v1.0.0-beta.1 — Current)
-*Focus: Stability and Parity*
+## 🟢 Phase 1: Public Beta (v1.0.0-beta.2 — Current)
+*Focus: Stability, Parity, and Rebranding to @fingguflux*
 - [x] Hardened React, Vue, Svelte adapters.
 - [x] Deterministic hashing engine (Extreme Mode).
 - [x] Scoped theme isolation.

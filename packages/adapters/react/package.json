@@ -1,36 +1,45 @@
 {
-    "name": "@fingguflux/react",
-    "version": "1.0.0-beta.2",
-    "description": "FingguFlux React Adapter - Zero-runtime, high-performance headless UI components.",
-    "type": "module",
-    "main": "./dist/index.js",
-    "module": "./dist/index.js",
-    "types": "./dist/index.d.ts",
-    "scripts": {
-        "build": "tsc"
-    },
-    "exports": {
-        ".": {
-            "types": "./dist/index.d.ts",
-            "import": "./dist/index.js"
-        }
-    },
-    "files": [
-        "dist",
-        "src",
-        "!src/**/*.test.*",
-        "!src/**/__tests__"
-    ],
-    "dependencies": {
-        "@fingguflux/js-helper": "^1.0.0-beta.2"
-    },
-    "peerDependencies": {
-        "react": ">=16.8.0",
-        "react-dom": ">=16.8.0"
-    },
-    "devDependencies": {
-        "@types/react": "^18.0.0",
-        "@types/react-dom": "^18.0.0",
-        "typescript": "^5.0.0"
+  "name": "@fingguflux/react",
+  "version": "1.0.0-beta.2",
+  "description": "FingguFlux React Adapter - Zero-runtime, high-performance headless UI components.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
     }
+  },
+  "files": [
+    "dist",
+    "src",
+    "!src/**/*.test.*",
+    "!src/**/__tests__"
+  ],
+  "dependencies": {
+    "@fingguflux/js-helper": "^1.0.0-beta.2"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^5.0.0"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/sudarshanpjadhav/fingguflux#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sudarshanpjadhav/fingguflux.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sudarshanpjadhav/fingguflux/issues"
+  }
 }

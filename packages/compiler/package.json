@@ -1,46 +1,54 @@
 {
-    "name": "@fingguflux/compiler",
-    "version": "1.0.0-beta.2",
-    "description": "The FingguFlux static analysis and selector hardening engine.",
-    "main": "index.js",
-    "exports": {
-        ".": "./index.js"
-    },
-    "bin": {
-        "finggu": "cli.js"
-    },
-    "files": [
-        "index.js",
-        "engine.js",
-        "scanner.js",
-        "cli.js",
-        "a11y.js",
-        "theme-check.js",
-        "snapshot.js"
-    ],
-    "type": "module",
-    "scripts": {
-        "test": "node --test test/theme-check.test.js",
-        "test:snapshot": "node --test test/snapshot.test.js",
-        "test:all": "node --test test/**/*.test.js",
-        "release-check": "node cli.js theme-check && node cli.js snapshot --compare"
-    },
-    "engines": {
-        "node": ">=16.0.0"
-    },
-    "keywords": [
-        "compiler",
-        "css-minification",
-        "hardening",
-        "obfuscation"
-    ],
-    "author": "Finggu Architecture Team",
-    "license": "MIT",
-    "dependencies": {
-        "@babel/parser": "^7.29.0",
-        "@babel/traverse": "^7.29.0",
-        "@vue/compiler-dom": "^3.5.29",
-        "parse5": "^8.0.0",
-        "svelte": "^5.53.6"
-    }
+  "name": "@fingguflux/compiler",
+  "version": "1.0.0-beta.2",
+  "description": "The FingguFlux static analysis and selector hardening engine.",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js"
+  },
+  "bin": {
+    "finggu": "cli.js"
+  },
+  "files": [
+    "index.js",
+    "engine.js",
+    "scanner.js",
+    "cli.js",
+    "a11y.js",
+    "theme-check.js",
+    "snapshot.js"
+  ],
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/theme-check.test.js",
+    "test:snapshot": "node --test test/snapshot.test.js",
+    "test:all": "node --test test/**/*.test.js",
+    "release-check": "node cli.js theme-check && node cli.js snapshot --compare"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "keywords": [
+    "compiler",
+    "css-minification",
+    "hardening",
+    "obfuscation"
+  ],
+  "author": "Finggu Architecture Team",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/parser": "^7.29.0",
+    "@babel/traverse": "^7.29.0",
+    "@vue/compiler-dom": "^3.5.29",
+    "parse5": "^8.0.0",
+    "svelte": "^5.53.6"
+  },
+  "homepage": "https://github.com/sudarshanpjadhav/fingguflux#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sudarshanpjadhav/fingguflux.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sudarshanpjadhav/fingguflux/issues"
+  }
 }

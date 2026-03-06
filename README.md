@@ -1,7 +1,7 @@
 # FingguFlux
 **Build Interfaces That Flow.**
 
-![Version](https://img.shields.io/badge/version-1.0.0--beta.1-blue)
+![Version](https://img.shields.io/badge/version-1.0.0--beta.2-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Tests](https://img.shields.io/badge/tests-65_passing-brightgreen)
 ![Frameworks](https://img.shields.io/badge/frameworks-React_|_Vue_|_Svelte-blueviolet)
@@ -31,7 +31,7 @@ FingguFlux operates in 3 distinct modes depending on your environment needs:
 
 ### 1. Clone the Repo Locally
 ```bash
-git clone https://github.com/fingguflux/fingguflux.git
+git clone https://github.com/sudarshanpjadhav/fingguflux.git
 cd fingguflux
 npm install
 npm run build
@@ -71,11 +71,9 @@ export default function App() {
 | `opt` | Strips `ff-` prefix, trims unused | `.btn-primary` | Standard production apps |
 | `ext` | FNV-1a Hash map, extreme pruning | `.ff-a1b2c3` | Enterprise, minified outputs |
 
-## 7. CLI Commands
+## 5. CLI Commands
 FingguFlux includes a robust CLI for enforcing your design contracts during development and CI automation:
-- `init` - Scaffolds a new FingguFlux configuration in your project.
 - `build` - Executes the compiler loop: extracts, maps, and writes CSS files.
-- `dev` - Alias/Watch mode for live UI mapping validation and hot module replacement.
 - `analyze` - Profiles compilation times, cache hit ratios, and class frequency.
 - `add` - Interactively installs individual headless components to your workspace.
 - `theme-check` - Confirms 100% token usage alignment against the `TOKENS_REGISTRY`. 

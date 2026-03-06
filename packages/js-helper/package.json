@@ -1,32 +1,40 @@
 {
-    "name": "@fingguflux/js-helper",
-    "version": "1.0.0-beta.2",
-    "description": "Shared runtime logic for FingguFlux themes and motion state management.",
-    "main": "dist/index.js",
-    "module": "dist/index.mjs",
-    "types": "dist/index.d.ts",
-    "files": [
-        "dist",
-        "src"
-    ],
-    "exports": {
-        ".": {
-            "types": "./dist/index.d.ts",
-            "import": "./dist/index.mjs"
-        }
-    },
-    "scripts": {
-        "build": "tsup src/index.ts --format cjs,esm --dts"
-    },
-    "devDependencies": {
-        "tsup": "^8.0.0",
-        "typescript": "^5.0.0"
-    },
-    "keywords": [
-        "runtime",
-        "theme-switching",
-        "motion-logic"
-    ],
-    "author": "Finggu Architecture Team",
-    "license": "MIT"
+  "name": "@fingguflux/js-helper",
+  "version": "1.0.0-beta.2",
+  "description": "Shared runtime logic for FingguFlux themes and motion state management.",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0"
+  },
+  "keywords": [
+    "runtime",
+    "theme-switching",
+    "motion-logic"
+  ],
+  "author": "Finggu Architecture Team",
+  "license": "MIT",
+  "homepage": "https://github.com/sudarshanpjadhav/fingguflux#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sudarshanpjadhav/fingguflux.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sudarshanpjadhav/fingguflux/issues"
+  }
 }
