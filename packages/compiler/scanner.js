@@ -95,7 +95,10 @@ const scanHTML = (content) => {
  */
 const scanVue = (content) => {
     const classes = new Set();
-    const { ast } = vueCompiler.compile(content, { mode: 'module' });
+    const { ast } = vueCompiler.compile(content, {
+        mode: 'module',
+        onError: () => { } // Ignore template tags side effect warnings
+    });
 
     const walk = (node) => {
         if (!node) return;

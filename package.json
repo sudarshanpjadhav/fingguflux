@@ -29,7 +29,7 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "build": "postcss src/index.css -o dist/index.css",
+    "build": "npm run compile && postcss src/index.css -o dist/index.css",
     "watch": "postcss src/index.css -o dist/index.css --watch",
     "compile": "node ./packages/compiler/cli.js",
     "compile:opt": "node ./packages/compiler/cli.js opt",

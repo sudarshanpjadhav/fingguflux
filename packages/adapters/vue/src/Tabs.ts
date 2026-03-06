@@ -1,4 +1,4 @@
-<script lang="ts" >
+// FingguFlux Tabs Component
 import { defineComponent, h, provide, ref, InjectionKey, Ref, PropType } from 'vue';
 import { useFinggu } from './composable';
 
