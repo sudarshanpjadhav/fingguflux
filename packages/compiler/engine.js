@@ -101,6 +101,7 @@ export class CompilerEngine {
         });
         this.stats.usedClasses = Object.keys(this.mapping).length;
         this.stats.unusedClasses = this.stats.totalClasses - this.stats.usedClasses;
+        this.stats.unusedList.sort(); // Ensure deterministic ordering regardless of Set insertion order
         if (this.mode === 'ext') {
             this.stats.extremeMappings = this.stats.usedClasses;
         }
@@ -157,7 +158,7 @@ export class CompilerEngine {
 
     generateReport() {
         return {
-            engineVersion: "1.0.0-beta.1",
+            engineVersion: "1.0.0-beta.2",
             mode: this.mode,
             stats: this.getStats(),
             mapping: this.getMapping()

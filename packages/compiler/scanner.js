@@ -237,7 +237,7 @@ export const scanFiles = (filePaths) => {
  */
 export const getProjectFiles = (dir, extensions = ['.html', '.js', '.jsx', '.ts', '.tsx', '.vue', '.svelte']) => {
     let results = [];
-    const list = fs.readdirSync(dir);
+    const list = fs.readdirSync(dir).sort(); // Sort for deterministic ordering across all OS filesystems
 
     list.forEach((file) => {
         file = path.join(dir, file);
