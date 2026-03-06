@@ -68,7 +68,7 @@ export function collectCSSTokens() {
 // ─── Component surface collector ─────────────────────────────────────────────
 
 /**
- * Collect all component CSS filenames published in @finggujadhav/core.
+ * Collect all component CSS filenames published in @fingguflux/core.
  * @returns {string[]} sorted list of component file basenames (e.g. "button.css")
  */
 export function collectComponentFiles() {
@@ -110,7 +110,7 @@ export function extractTSExports(src) {
 }
 
 /**
- * Collect all public JS exports from @finggujadhav/js-helper src.
+ * Collect all public JS exports from @fingguflux/js-helper src.
  * @returns {string[]}
  */
 export function collectJSExports() {

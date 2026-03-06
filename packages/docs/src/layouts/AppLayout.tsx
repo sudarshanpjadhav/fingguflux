@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '@finggujadhav/react';
+import { Button } from '@fingguflux/react';
 import '../../../../dist/index.css';
 
 /**

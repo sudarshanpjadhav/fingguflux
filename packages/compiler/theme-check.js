@@ -228,7 +228,7 @@ export function loadRegistry() {
         path.resolve('./src/metadata/TOKENS_REGISTRY.json'),
         path.resolve('../../src/metadata/TOKENS_REGISTRY.json'),
         path.resolve('./packages/core/TOKENS_REGISTRY.json'), // Legacy fallback
-        path.resolve('./node_modules/@finggujadhav/core/TOKENS_REGISTRY.json'),
+        path.resolve('./node_modules/@fingguflux/core/TOKENS_REGISTRY.json'),
     ];
 
     for (const p of candidates) {

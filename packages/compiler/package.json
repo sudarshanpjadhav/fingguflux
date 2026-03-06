@@ -1,6 +1,6 @@
 {
-    "name": "@finggujadhav/compiler",
-    "version": "1.0.0-beta.1",
+    "name": "@fingguflux/compiler",
+    "version": "1.0.0-beta.2",
     "description": "The FingguFlux static analysis and selector hardening engine.",
     "main": "index.js",
     "exports": {

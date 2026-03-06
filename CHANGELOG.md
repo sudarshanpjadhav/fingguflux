@@ -2,6 +2,13 @@
 
 All notable changes to FingguFlux will be documented in this file.
  
+## [1.0.0-beta.2] - 2026-03-06
+### Changed
+- Rebranded all package scopes from @finggujadhav to @fingguflux
+- All packages now published under @fingguflux organization on npm
+- Updated all internal dependencies to use @fingguflux scope
+- Updated all documentation and example code
+
 ## [1.0.0-beta.1] - 2026-03-04
 *Stabilization Phase for Public Readiness*
 
@@ -9,14 +16,14 @@ All notable changes to FingguFlux will be documented in this file.
 - **CLI Robustness**: Fully wired all 7 CLI commands (`build`, `analyze`, `doctor`, `a11y`, `theme-check`, `snapshot`, `harden`) into the execution router.
 - **Contract Enforcement**: Registered 26 previously orphaned layout and typography tokens, reaching a milestone of 121 unified, contract-enforced CSS tokens.
 - **Version Identity**: Aligned all sub-packages, documentation, and internal telemetry to a single source of truth (`v1.0.0-beta.1`).
-- **Adapter Reliability**: Updated `@finggujadhav/svelte` peer dependency to accurately reflect the strict `svelte@>=5.0.0` AST requirement.
+- **Adapter Reliability**: Updated `@fingguflux/svelte` peer dependency to accurately reflect the strict `svelte@>=5.0.0` AST requirement.
 - **Architecture**: Scaffolded Web Components adapter stub indicating formal `v1.1` roadmap inclusion.
 
 ## [0.9.8] - 2026-02-27
 ### Added
 - **Compiler Intelligence**:
   - New `fingguCompiler` Vite plugin bridge for automated, zero-config contract hardening in Vite/Next.js workflows.
-  - Standardized entry point `index.js` for `@finggujadhav/compiler` allowing programmatic usage.
+  - Standardized entry point `index.js` for `@fingguflux/compiler` allowing programmatic usage.
 - **Documentation**:
   - New "CSS Drift Problem" diagnostic section in README.
   - New interactive `css-drift-demo.html` for visual validation of contract enforcement.
@@ -29,11 +36,11 @@ All notable changes to FingguFlux will be documented in this file.
   - `API_SURFACE_SNAPSHOT.json` — machine-readable baseline of the full public API surface (83 CSS tokens, 14 JS exports, 6 CLI commands, 11 component CSS files).
   - `finggu snapshot --write` — CLI command to generate/update the snapshot baseline.
   - `finggu snapshot --compare` — CI breaking-change guard; diffs current API surface against stored baseline, fails on any removal and warns on additions.
-  - `DEPRECATION_LOG.json` — formal deprecation ledger published with `@finggujadhav/core`; CI enforces overdue entries as breaking changes.
+  - `DEPRECATION_LOG.json` — formal deprecation ledger published with `@fingguflux/core`; CI enforces overdue entries as breaking changes.
   - `VERSION_POLICY.md` — canonical versioning policy: semver rules, deprecation lifecycle, release gate checklist, breaking change definitions.
   - 30-test regression suite (`node --test`) covering CSS token extraction, TS export extraction, surface diffing, breaking-change detection, and addition warnings (REG-007, REG-008).
 - `finggu snapshot` added as 6th CLI command (alongside: build, analyze, doctor, a11y, theme-check).
-- `snapshot.js` published with `@finggujadhav/compiler`.
+- `snapshot.js` published with `@fingguflux/compiler`.
 - No breaking changes; fully backward compatible.
 - Contract freeze maintained — `finggu theme-check` and `finggu snapshot --compare` both pass green.
 

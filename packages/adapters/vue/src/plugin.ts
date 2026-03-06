@@ -1,5 +1,5 @@
 import { InjectionKey, App, reactive, watch } from 'vue';
-import { setTheme, FingguTheme } from '@finggujadhav/js-helper';
+import { setTheme, FingguTheme } from '@fingguflux/js-helper';
 
 export interface FingguMapping {
     _version?: string;

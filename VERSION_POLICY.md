@@ -117,9 +117,9 @@ The following actions are **always breaking** under FingguFlux policy:
 | Action                                                         | Classification |
 |----------------------------------------------------------------|----------------|
 | Remove a CSS custom property from `tokens.css`                 | BREAKING       |
-| Remove a named JS export from `@finggujadhav/js-helper`        | BREAKING       |
-| Remove a CLI command from `@finggujadhav/compiler`             | BREAKING       |
-| Remove a component CSS file from `@finggujadhav/core`          | BREAKING       |
+| Remove a named JS export from `@fingguflux/js-helper`        | BREAKING       |
+| Remove a CLI command from `@fingguflux/compiler`             | BREAKING       |
+| Remove a component CSS file from `@fingguflux/core`          | BREAKING       |
 | Rename a token without a deprecation entry                     | BREAKING       |
 | Violate a `TOKENS_REGISTRY.json` required-token rule           | BREAKING       |
 | Fail to provide dark/system overrides for required tokens      | BREAKING       |
@@ -148,7 +148,7 @@ Before **any** version bump the following automated gates must pass:
 [ ]  finggu snapshot --compare   → ✨ API surface STABLE
 [ ]  node --test packages/compiler/test/theme-check.test.js   → 35/35 pass
 [ ]  node --test packages/compiler/test/snapshot.test.js      → all pass
-[ ]  npm pack --dry-run (@finggujadhav/core, @finggujadhav/compiler)
+[ ]  npm pack --dry-run (@fingguflux/core, @fingguflux/compiler)
 [ ]  CHANGELOG.md updated with the new version entry
 ```
 

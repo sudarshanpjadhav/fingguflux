@@ -50,8 +50,8 @@ export default defineConfig({
 
 ### 3. Usage Example (React)
 ```tsx
-import { FingguProvider, Button } from '@finggujadhav/react';
-import '@finggujadhav/core/dist/index.css';
+import { FingguProvider, Button } from '@fingguflux/react';
+import '@fingguflux/core/dist/index.css';
 
 export default function App() {
   return (

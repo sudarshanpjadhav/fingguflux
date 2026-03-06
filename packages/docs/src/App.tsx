@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppLayout } from './layouts/AppLayout';
 import { Playground } from './components/Playground';
-import { Button, Card } from '@finggujadhav/react';
+import { Button, Card } from '@fingguflux/react';
 
 // Simplified Markdown renderer for the demo
 const Section: React.FC<{ title: string; children: React.ReactNode; id?: string }> = ({ title, children, id }) => (
