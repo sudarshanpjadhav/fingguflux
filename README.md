@@ -27,7 +27,7 @@ FingguFlux operates in 3 distinct modes depending on your environment needs:
 - **Zero Runtime Style Injection**: CSS is static; Javascript only manages specific interaction states (e.g. traps, themes).
 
 ## Quick Start (Local Beta)
-> **Note:** The `v1.0.0-beta.1` packages are not yet formally published. **npm publish coming with v1.0 stable!** Until then, clone the repository to use FingguFlux locally in your project.
+> **Note:** The `v1.0.0-beta.2` packages are not yet formally published. **npm publish coming with v1.0 stable!** Until then, clone the repository to use FingguFlux locally in your project.
 
 ### 1. Clone the Repo Locally
 ```bash
@@ -71,7 +71,7 @@ export default function App() {
 | `opt` | Strips `ff-` prefix, trims unused | `.btn-primary` | Standard production apps |
 | `ext` | FNV-1a Hash map, extreme pruning | `.ff-a1b2c3` | Enterprise, minified outputs |
 
-## 5. CLI Commands
+## CLI Commands
 FingguFlux includes a robust CLI for enforcing your design contracts during development and CI automation:
 - `build` - Executes the compiler loop: extracts, maps, and writes CSS files.
 - `analyze` - Profiles compilation times, cache hit ratios, and class frequency.
